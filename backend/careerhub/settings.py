@@ -2,9 +2,6 @@ import os
 from pathlib import Path
 
 from django.core.management.utils import get_random_secret_key
-from dotenv import load_dotenv
-
-load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,6 +18,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'users'
 ]
 
 MIDDLEWARE = [
@@ -97,7 +95,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL = "users.User"
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
