@@ -7,15 +7,37 @@ class CustomUserSerializer(UserSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'email', 'first_name', 'last_name', 'telegram', 'phone_number', 'company', 'password')
-        extra_kwargs = {'password': {'write_only': True}}
+        fields = (
+            'id',
+            'email',
+            'first_name',
+            'last_name',
+            'telegram',
+            'phone_number',
+            'company',
+            'password'
+        )
+        extra_kwargs = {
+            'password': {'write_only': True},
+            'telegram': {'required': False},
+            'phone_number': {'required': False},
+            'company': {'required': False}
+        }
 
     def create(self, validated_data):
         user = User(
             email=validated_data['email'],
             first_name=validated_data['first_name'],
-            last_name=validated_data['last_name'],
+            last_name=validated_data['last_name']
         )
+
+        if 'telegram' in validated_data:
+            user.telegram = validated_data['telegram']
+        if 'phone_number' in validated_data:
+            user.telegram = validated_data['phone_number']
+        if 'company' in validated_data:
+            user.telegram = validated_data['company']
+
         user.set_password(validated_data['password'])
         user.save()
         return user
