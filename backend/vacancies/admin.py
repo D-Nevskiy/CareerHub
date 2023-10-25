@@ -21,8 +21,3 @@ class VacancyEducationLevelAdmin(admin.ModelAdmin):
     list_display = ('vacancy', 'education_level')
     list_filter = ('vacancy', 'education_level')
     search_fields = ('vacancy__name', 'education_level__name')
-
-
-@admin.register(Schedule)
-class ScheduleAdmin(admin.ModelAdmin):
-    list_display = ('name',)

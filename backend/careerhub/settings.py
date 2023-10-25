@@ -32,7 +32,6 @@ if IS_LOGGING:
         },
     }
 
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -44,7 +43,8 @@ INSTALLED_APPS = [
     'djoser',
     'users',
     'students',
-    'vacancies'
+    'vacancies',
+    'shared_info'
 ]
 
 MIDDLEWARE = [
@@ -80,13 +80,13 @@ WSGI_APPLICATION = 'careerhub.wsgi.application'
 
 if DB_ENGINE == 'sqlite3':
     DATABASES = {
-            'default': {
-                'ENGINE': 'django.db.backends.sqlite3',
-                'NAME': BASE_DIR / 'db.sqlite3',
-            }
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
         }
+    }
 
-if DB_ENGINE == 'postgresql':
+if DB_ENGINE == 'django.db.backends.postgresql':
     DATABASES = {
         'default': {
             'ENGINE': os.getenv('DB_ENGINE',
@@ -144,8 +144,10 @@ REST_FRAMEWORK = {
 DJOSER = {
     'LOGIN_FIELD': 'email',
     'HIDE_USERS': False,
-    'ACTIVATION_URL': 'api/activation_user/{uid}/{token}/',
+    'ACTIVATION_URL': 'api/activate/{uid}/{token}/',
     'SEND_ACTIVATION_EMAIL': True,
+    'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
+    'PASSWORD_RESET_CONFIRM_URL': 'api/password-reset/{uid}/{token}',
 
     'SERIALIZERS': {
         'user': 'users.serializers.CustomUserSerializer',
