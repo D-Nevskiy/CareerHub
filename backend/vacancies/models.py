@@ -2,19 +2,8 @@ from django.db import models
 
 from core.constants.vacancies import (VACANCY_NAME_LENGTH, VACANCY_TEXT_LENGTH,
                                       VACANCY_SCHEDULE_LENGTH)
-from students.models import Skill, EducationLevel
+from shared_info.models import Schedule, Skill, EducationLevel
 from users.models import User
-
-
-class Schedule(models.Model):
-    name = models.CharField(max_length=VACANCY_SCHEDULE_LENGTH)
-
-    class Meta:
-        verbose_name = 'График'
-        verbose_name_plural = 'Графики'
-
-    def __str__(self):
-        return self.name
 
 
 class Vacancy(models.Model):
