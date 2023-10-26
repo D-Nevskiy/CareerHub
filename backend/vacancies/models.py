@@ -2,7 +2,7 @@ from django.db import models
 
 from core.constants.vacancies import (VACANCY_NAME_LENGTH, VACANCY_TEXT_LENGTH,
                                       VACANCY_SCHEDULE_LENGTH)
-from shared_info.models import Schedule, Skill, EducationLevel
+from shared_info.models import Schedule, Skill, EducationLevel, Specialization
 from users.models import User
 
 
@@ -34,8 +34,16 @@ class Vacancy(models.Model):
     schedule = models.ManyToManyField(
         Schedule,
         related_name='vacancies',
+        through='vacancies.VacancySchedule',
         verbose_name='График работы',
         help_text='Выберите желаемый график работы'
+    )
+    specialization = models.ManyToManyField(
+        Specialization,
+        related_name='vacancies',
+        through='vacancies.VacancySpecialization',
+        verbose_name='Направление специальности',
+        help_text='Выберите желаемое направление специальности'
     )
     required_skills = models.ManyToManyField(
         Skill,
@@ -98,3 +106,47 @@ class VacancyEducationLevel(models.Model):
 
     def __str__(self):
         return f'{self.vacancy} – {self.education_level}'
+
+
+class VacancySchedule(models.Model):
+    vacancy = models.ForeignKey(
+        Vacancy,
+        on_delete=models.CASCADE,
+        verbose_name='Вакансия',
+        related_name='vacancy_schedule'
+    )
+    schedule = models.ForeignKey(
+        Schedule,
+        on_delete=models.CASCADE,
+        verbose_name='График работы в вакансии',
+        related_name='vacancy_schedule'
+    )
+
+    class Meta:
+        verbose_name = 'График работы в вакансии'
+        verbose_name_plural = 'Графики работы в вакансиях'
+
+    def __str__(self):
+        return f'{self.vacancy} – {self.schedule}'
+
+
+class VacancySpecialization(models.Model):
+    vacancy = models.ForeignKey(
+        Vacancy,
+        on_delete=models.CASCADE,
+        verbose_name='Вакансия',
+        related_name='vacancy_specialization'
+    )
+    specialization = models.ForeignKey(
+        Specialization,
+        on_delete=models.CASCADE,
+        verbose_name='Направление специальности',
+        related_name='vacancy_specialization'
+    )
+
+    class Meta:
+        verbose_name = 'Направление специальности'
+        verbose_name_plural = 'Направления специальностей'
+
+    def __str__(self):
+        return f'{self.vacancy} – {self.specialization}'

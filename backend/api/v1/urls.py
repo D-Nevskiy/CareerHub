@@ -5,7 +5,7 @@ from users.views import CustomUserViewSet
 router = DefaultRouter()
 
 router.register(r'users', CustomUserViewSet)
-router.register(r'activation_user/<str:uid>/<str:token>/', CustomUserViewSet)
+#router.register(r'activation_user/<str:uid>/<str:token>/', CustomUserViewSet)
 
 urlpatterns = [
     # Нужно зацепить 11 строку вместо 13. Пока хз как))

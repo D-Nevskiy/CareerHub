@@ -1,6 +1,9 @@
 from django.db import models
-from core.constants.shared_info import (SKILL_NAME_LENGTH, EDUCATIONLEVEL_NAME_LENGTH,
-                                         SPECIALIZATION_NAME_LENGTH, SCHEDULE_NAME_LENGTH)
+from core.constants.shared_info import (SKILL_NAME_LENGTH,
+                                        EDUCATIONLEVEL_NAME_LENGTH,
+                                        SPECIALIZATION_NAME_LENGTH,
+                                        SCHEDULE_NAME_LENGTH,
+                                        COURSE_NAME_LENGTH)
 
 
 class Skill(models.Model):
@@ -42,6 +45,17 @@ class Schedule(models.Model):
     class Meta:
         verbose_name = 'График'
         verbose_name_plural = 'Графики'
+
+    def __str__(self):
+        return self.name
+
+
+class Course(models.Model):
+    name = models.CharField(max_length=COURSE_NAME_LENGTH)
+
+    class Meta:
+        verbose_name = 'Курс'
+        verbose_name_plural = 'Курс'
 
     def __str__(self):
         return self.name

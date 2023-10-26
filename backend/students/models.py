@@ -1,12 +1,23 @@
 from django.db import models
-from shared_info.models import Skill, EducationLevel, Specialization, Schedule
+
 from core.constants.students import (NAME_LENGTH, EMAIL_LENGTH,
                                      TELEGRAM_LENGTH, PHONE_NUMBER_LENGTH,
-                                     COMPANY_NAME_LENGTH, ROLE_LENGTH,
-                                     PORTFOLIO_LENGTH, EXPERIENCE_LENGTH)
+                                     ROLE_LENGTH, PORTFOLIO_LENGTH,
+                                     EXPERIENCE_LENGTH, STUDENT_MAX_AGE)
+from shared_info.models import (Skill, EducationLevel, Specialization,
+                                Schedule, Course)
 
 
 class Student(models.Model):
+
+    MALE = 'Мужчина'
+    FEMALE = 'Женщина'
+
+    SEX = (
+        (MALE, MALE),
+        (FEMALE, FEMALE)
+    )
+
     avatar = models.ImageField(
         upload_to='avatars/',
         blank=True
@@ -16,6 +27,17 @@ class Student(models.Model):
     email = models.EmailField(
         max_length=EMAIL_LENGTH,
         unique=True
+    )
+    sex = models.CharField(
+        'Пол',
+        max_length=ROLE_LENGTH,
+        choices=SEX,
+        null=False,
+        blank=True
+    )
+    age = models.PositiveSmallIntegerField(
+        null=False,
+        blank=True
     )
     telegram = models.URLField(
         max_length=TELEGRAM_LENGTH,
@@ -37,6 +59,11 @@ class Student(models.Model):
     specialization = models.ForeignKey(
         Specialization,
         related_name='students',
+        on_delete=models.CASCADE
+    )
+    course = models.ForeignKey(
+        Course,
+        related_name='course',
         on_delete=models.CASCADE
     )
     education_level = models.ManyToManyField(

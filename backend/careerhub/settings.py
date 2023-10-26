@@ -42,9 +42,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'djoser',
     'users',
+    'shared_info',
     'students',
     'vacancies',
-    'shared_info'
+    'drf_yasg',
+
 ]
 
 MIDDLEWARE = [
@@ -144,7 +146,7 @@ REST_FRAMEWORK = {
 DJOSER = {
     'LOGIN_FIELD': 'email',
     'HIDE_USERS': False,
-    'ACTIVATION_URL': 'api/activate/{uid}/{token}/',
+    'ACTIVATION_URL': 'api/activation_user/{uid}/{token}/',
     'SEND_ACTIVATION_EMAIL': True,
     'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
     'PASSWORD_RESET_CONFIRM_URL': 'api/password-reset/{uid}/{token}',
