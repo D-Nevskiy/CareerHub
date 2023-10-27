@@ -42,9 +42,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'djoser',
     'users',
+    'shared_info',
     'students',
     'vacancies',
-    'shared_info'
+    'drf_yasg',
+
 ]
 
 MIDDLEWARE = [
@@ -122,8 +124,8 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/backend_static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'backend_static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -144,7 +146,7 @@ REST_FRAMEWORK = {
 DJOSER = {
     'LOGIN_FIELD': 'email',
     'HIDE_USERS': False,
-    'ACTIVATION_URL': 'api/activate/{uid}/{token}/',
+    'ACTIVATION_URL': 'api/activation_user/{uid}/{token}/',
     'SEND_ACTIVATION_EMAIL': True,
     'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
     'PASSWORD_RESET_CONFIRM_URL': 'api/password-reset/{uid}/{token}',

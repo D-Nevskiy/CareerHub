@@ -1,11 +1,12 @@
 from django.contrib import admin
-from .models import Vacancy, VacancySkills, VacancyEducationLevel, Schedule
+from vacancies.models import (Vacancy, VacancySkills, VacancyEducationLevel,
+                              VacancySpecialization, VacancySchedule)
 
 
 @admin.register(Vacancy)
 class VacancyAdmin(admin.ModelAdmin):
     list_display = ('name', 'author', 'pub_date')
-    list_filter = ('author', 'pub_date', 'schedule')
+    list_filter = ('author', 'pub_date', 'schedule', 'specialization')
     search_fields = ('name', 'author__username')
 
 
@@ -21,3 +22,17 @@ class VacancyEducationLevelAdmin(admin.ModelAdmin):
     list_display = ('vacancy', 'education_level')
     list_filter = ('vacancy', 'education_level')
     search_fields = ('vacancy__name', 'education_level__name')
+
+
+@admin.register(VacancySpecialization)
+class VacancySpecializationAdmin(admin.ModelAdmin):
+    list_display = ('vacancy', 'specialization')
+    list_filter = ('vacancy', 'specialization')
+    search_fields = ('vacancy__name', 'specialization__name')
+
+
+@admin.register(VacancySchedule)
+class VacancyScheduleAdmin(admin.ModelAdmin):
+    list_display = ('vacancy', 'schedule')
+    list_filter = ('vacancy', 'schedule')
+    search_fields = ('vacancy__name', 'schedule__name')

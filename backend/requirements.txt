@@ -8,3 +8,4 @@ psycopg2-binary==2.9.3
 reportlab==3.6.12
 python-dotenv==1.0.0
 djangorestframework-simplejwt==4.7.2
+drf-yasg==1.21.7
