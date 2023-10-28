@@ -8,7 +8,7 @@ from core.constants.students import (NAME_LENGTH, EMAIL_LENGTH,
                                      STUDENT_MIN_AGE)
 from core.validators import validate_phone_number
 from shared_info.models import (Skill, EducationLevel, Specialization,
-                                Schedule, Course)
+                                Schedule, Course, Location)
 
 
 class Student(models.Model):
@@ -20,6 +20,7 @@ class Student(models.Model):
         - first_name: Имя студента.
         - last_name: Фамилия студента.
         - email: Электронная почта студента.
+        - location: Город студента.
         - sex: Пол студента.
         - age: Возраст студента.
         - telegram: Ссылка на Telegram студента.
@@ -27,7 +28,7 @@ class Student(models.Model):
         - portfolio: Портфолио студента.
         - experience: Опыт работы студента.
         - specialization: Направление специальности студента.
-        - course: Название курса, на котором учится студент.
+        - course: Название курса, на котором учится/учился студент.
         - education_level: Грейд студента.
         - skills: Ключевые навыки студента.
         - schedule: График работы студента.
@@ -64,6 +65,13 @@ class Student(models.Model):
         verbose_name='Электронная почта студента',
         help_text='Введите электронную почту студента'
     )
+    location = models.ForeignKey(
+        Location,
+        related_name='students',
+        on_delete=models.CASCADE,
+        verbose_name='Локация',
+        help_text='Выберите локацию'
+    )
     sex = models.CharField(
         max_length=ROLE_LENGTH,
         choices=SEX_CHOICES,
@@ -76,7 +84,8 @@ class Student(models.Model):
         null=False,
         blank=True,
         validators=[
-            MinValueValidator(STUDENT_MIN_AGE, 'Возраст не может быть ниже 18!'),
+            MinValueValidator(STUDENT_MIN_AGE,
+                              'Возраст не может быть ниже 18!'),
             MaxValueValidator(STUDENT_MAX_AGE, 'Слишком большой возраст!')
         ],
         verbose_name='Возраст студента',
@@ -108,10 +117,10 @@ class Student(models.Model):
         verbose_name='Опыт работы студента',
         help_text='Укажите опыт работы студента'
     )
-    specialization = models.ManyToManyField(
+    specialization = models.ForeignKey(
         Specialization,
         related_name='students',
-        through='students.StudentSpecialization',
+        on_delete=models.CASCADE,
         verbose_name='Направление специальности',
         help_text='Выберите направление специальности'
     )
@@ -122,10 +131,10 @@ class Student(models.Model):
         verbose_name='Название курса',
         help_text='Выберите название курса'
     )
-    education_level = models.ManyToManyField(
+    education_level = models.ForeignKey(
         EducationLevel,
         related_name='students',
-        through='students.StudentEducationLevel',
+        on_delete=models.CASCADE,
         verbose_name='Грейд студента',
         help_text='Выберите грейд'
     )
@@ -185,39 +194,6 @@ class StudentSkills(models.Model):
         return f'{self.student} – {self.skill}'
 
 
-class StudentEducationLevel(models.Model):
-    """
-    Модель для хранения связей между студентами и их грейдом.
-
-    Attributes:
-        - student: Связь с моделью студента.
-        - education_level: Связь с моделью уровня образования.
-
-    Methods:
-        - __str__(): Возвращает строковое представление связи в формате "Студент – Грейд".
-
-    """
-    student = models.ForeignKey(
-        Student,
-        on_delete=models.CASCADE,
-        verbose_name='Студент',
-        related_name='student_education_level'
-    )
-    education_level = models.ForeignKey(
-        EducationLevel,
-        on_delete=models.CASCADE,
-        verbose_name='Грейд студента',
-        related_name='student_education_level'
-    )
-
-    class Meta:
-        verbose_name = 'Грейд студента'
-        verbose_name_plural = 'Грейды студентов'
-
-    def __str__(self):
-        return f'{self.student} – {self.education_level}'
-
-
 class StudentSchedule(models.Model):
     """
     Модель для хранения связей между студентами и графиком работы.
@@ -250,36 +226,3 @@ class StudentSchedule(models.Model):
 
     def __str__(self):
         return f'{self.student} – {self.schedule}'
-
-
-class StudentSpecialization(models.Model):
-    """
-    Модель для хранения связей между студентами и специализациями.
-
-    Attributes:
-        - student: Связь с моделью студента.
-        - specialization: Связь с моделью специализации.
-
-    Methods:
-        - __str__(): Возвращает строковое представление связи в
-        формате "Студент – Специализация".
-    """
-    student = models.ForeignKey(
-        Student,
-        on_delete=models.CASCADE,
-        verbose_name='Студент',
-        related_name='student_specialization'
-    )
-    specialization = models.ForeignKey(
-        Specialization,
-        on_delete=models.CASCADE,
-        verbose_name='Специализация студента',
-        related_name='student_specialization'
-    )
-
-    class Meta:
-        verbose_name = 'Специализация студента'
-        verbose_name_plural = 'Специализации студентов'
-
-    def __str__(self):
-        return f'{self.student} – {self.specialization}'

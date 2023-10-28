@@ -3,7 +3,7 @@ from core.constants.shared_info import (SKILL_NAME_LENGTH,
                                         EDUCATIONLEVEL_NAME_LENGTH,
                                         SPECIALIZATION_NAME_LENGTH,
                                         SCHEDULE_NAME_LENGTH,
-                                        COURSE_NAME_LENGTH)
+                                        COURSE_NAME_LENGTH, LOCATION_LENGTH)
 
 
 class Skill(models.Model):
@@ -132,7 +132,36 @@ class Course(models.Model):
 
     class Meta:
         verbose_name = 'Курс'
-        verbose_name_plural = 'Курс'
+        verbose_name_plural = 'Курсы'
+
+    def __str__(self):
+        return self.name
+
+
+class Location(models.Model):
+    """
+    Модель для хранения информации о локации.
+
+    Attributes:
+        - name (str): Название города.
+
+    Methods:
+        - __str__(): Возвращает строковое представление города (название).
+
+    Meta:
+        - verbose_name (str): Отображаемое название
+        модели (единственное число).
+        - verbose_name_plural (str): Отображаемое название
+        модели (множественное число).
+    """
+    name = models.CharField(
+        max_length=LOCATION_LENGTH,
+        db_index=True
+    )
+
+    class Meta:
+        verbose_name = 'Город'
+        verbose_name_plural = 'Города'
 
     def __str__(self):
         return self.name

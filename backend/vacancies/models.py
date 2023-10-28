@@ -1,7 +1,8 @@
 from django.db import models
 
 from core.constants.vacancies import (VACANCY_NAME_LENGTH, VACANCY_TEXT_LENGTH)
-from shared_info.models import Schedule, Skill, EducationLevel, Specialization
+from shared_info.models import Schedule, Skill, EducationLevel, Specialization, \
+    Location
 from users.models import User
 
 
@@ -12,6 +13,7 @@ class Vacancy(models.Model):
     Атрибуты:
         - name (str): Название вакансии.
         - author (User): Автор вакансии.
+        - location: Город вакансии.
         - text (str): Описание вакансии.
         - pub_date (datetime): Дата публикации вакансии.
         - schedule (ManyToManyField): График работы.
@@ -38,6 +40,13 @@ class Vacancy(models.Model):
         related_name='vacancies',
         on_delete=models.CASCADE,
         verbose_name='Автор'
+    )
+    location = models.ForeignKey(
+        Location,
+        related_name='vacancies',
+        on_delete=models.CASCADE,
+        verbose_name='Локация',
+        help_text='Выберите локацию'
     )
     text = models.TextField(
         max_length=VACANCY_TEXT_LENGTH,

@@ -1,8 +1,6 @@
 from django.contrib import admin
 
-from students.models import (Student, StudentSkills,
-                             StudentEducationLevel, StudentSpecialization,
-                             StudentSchedule)
+from students.models import (Student, StudentSkills, StudentSchedule)
 
 
 @admin.register(Student)
@@ -40,47 +38,10 @@ class StudentSkillsAdmin(admin.ModelAdmin):
     list_display = ('student', 'skill')
     list_filter = ('student', 'skill')
     search_fields = (
-    'student__first_name', 'student__last_name', 'skill__name')
-
-
-@admin.register(StudentEducationLevel)
-class StudentEducationLevelAdmin(admin.ModelAdmin):
-    """
-    Класс администратора для модели StudentEducationLevel.
-
-    Параметры:
-        - list_display: Поля, которые будут отображаться в списке связей
-        студентов и грейдов.
-        - list_filter: Поля, по которым можно фильтровать список связей.
-        - search_fields: Поля, по которым можно выполнять поиск связей.
-
-    Модель:
-        - StudentEducationLevel.
-    """
-    list_display = ('student', 'education_level')
-    list_filter = ('student', 'education_level')
-    search_fields = (
-    'student__first_name', 'student__last_name', 'education_level__name')
-
-
-@admin.register(StudentSpecialization)
-class StudentSpecializationAdmin(admin.ModelAdmin):
-    """
-    Класс администратора для модели StudentSpecialization.
-
-    Параметры:
-        - list_display: Поля, которые будут отображаться в списке связей
-        студентов и направлений специальности.
-        - list_filter: Поля, по которым можно фильтровать список связей.
-        - search_fields: Поля, по которым можно выполнять поиск связей.
-
-    Модель:
-        - StudentSpecialization.
-    """
-    list_display = ('student', 'specialization')
-    list_filter = ('student', 'specialization')
-    search_fields = (
-    'student__first_name', 'student__last_name', 'specialization__name')
+        'student__first_name',
+        'student__last_name',
+        'skill__name'
+    )
 
 
 @admin.register(StudentSchedule)
@@ -100,4 +61,7 @@ class StudentScheduleAdmin(admin.ModelAdmin):
     list_display = ('student', 'schedule')
     list_filter = ('student', 'schedule')
     search_fields = (
-    'student__first_name', 'student__last_name', 'schedule__name')
+        'student__first_name',
+        'student__last_name',
+        'schedule__name'
+    )
