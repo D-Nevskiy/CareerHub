@@ -90,11 +90,10 @@ if DB_ENGINE == 'sqlite3':
         }
     }
 
-if DB_ENGINE == 'django.db.backends.postgresql':
+if DB_ENGINE == 'postgresql':
     DATABASES = {
         'default': {
-            'ENGINE': os.getenv('DB_ENGINE',
-                                default='django.db.backends.postgresql'),
+            'ENGINE': 'django.db.backends.postgresql',
             'NAME': os.getenv('DB_NAME', default='app'),
             'USER': os.getenv('POSTGRES_USER', default='postgres'),
             'PASSWORD': os.getenv('POSTGRES_PASSWORD', default='123456'),

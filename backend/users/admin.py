@@ -15,5 +15,5 @@ class UserAdmin(admin.ModelAdmin):
     Модель:
         - User.
     """
-    list_display = ('email', 'last_name', 'first_name')
+    list_display = ('id', 'email', 'last_name', 'first_name')
     search_fields = ('email', 'last_name', 'first_name')

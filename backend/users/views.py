@@ -11,7 +11,7 @@ from users.serializers import CustomUserSerializer
 
 class CustomUserViewSet(UserViewSet):
     """
-    Пользовательский ViewSet для работы с пользователями.
+    Кастомный ViewSet для работы с пользователями.
 
     Этот ViewSet предоставляет эндпоинты для управления пользователями,
     включая активацию.

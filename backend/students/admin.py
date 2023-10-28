@@ -16,7 +16,7 @@ class StudentAdmin(admin.ModelAdmin):
     Модель:
         - Student.
     """
-    list_display = ('last_name', 'first_name')
+    list_display = ('id', 'last_name', 'first_name')
     list_filter = ('schedule', 'specialization')
     search_fields = ('last_name', 'first_name')
 
@@ -35,7 +35,7 @@ class StudentSkillsAdmin(admin.ModelAdmin):
     Модель:
         - StudentSkills.
     """
-    list_display = ('student', 'skill')
+    list_display = ('id', 'student', 'skill')
     list_filter = ('student', 'skill')
     search_fields = (
         'student__first_name',
@@ -58,7 +58,7 @@ class StudentScheduleAdmin(admin.ModelAdmin):
     Модель:
         - StudentSchedule.
     """
-    list_display = ('student', 'schedule')
+    list_display = ('id', 'student', 'schedule')
     list_filter = ('student', 'schedule')
     search_fields = (
         'student__first_name',
