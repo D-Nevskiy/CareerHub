@@ -93,10 +93,10 @@ if DB_ENGINE == 'postgresql':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.getenv('DB_NAME', default='app'),
-            'USER': os.getenv('POSTGRES_USER', default='postgres'),
-            'PASSWORD': os.getenv('POSTGRES_PASSWORD', default='123456'),
-            'HOST': os.getenv('DB_HOST', default='localhost'),
+            'NAME': os.getenv('DB_NAME', default='django'),
+            'USER': os.getenv('POSTGRES_USER', default='django_user'),
+            'PASSWORD': os.getenv('POSTGRES_PASSWORD', default='django'),
+            'HOST': os.getenv('DB_HOST', default='db'),
             'PORT': os.getenv('DB_PORT', default=5432)
         }
     }
@@ -150,6 +150,19 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=7),
     'AUTH_HEADER_TYPES': ('Bearer',),
 }
+
+SWAGGER_SETTINGS = {
+    "SECURITY_DEFINITIONS": {
+        "JWT [Bearer {JWT}]": {
+            "name": "Authorization",
+            "type": "apiKey",
+            "in": "header",
+        }
+    },
+    "USE_SESSION_AUTH": False,
+}
+
+FORCE_SCRIPT_NAME = "/"
 
 DJOSER = {
     'LOGIN_FIELD': 'email',
