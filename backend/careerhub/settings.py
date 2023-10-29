@@ -1,5 +1,7 @@
 import os
+from datetime import timedelta
 from pathlib import Path
+
 from django.core.management.utils import get_random_secret_key
 from dotenv import load_dotenv
 
@@ -88,11 +90,10 @@ if DB_ENGINE == 'sqlite3':
         }
     }
 
-if DB_ENGINE == 'django.db.backends.postgresql':
+if DB_ENGINE == 'postgresql':
     DATABASES = {
         'default': {
-            'ENGINE': os.getenv('DB_ENGINE',
-                                default='django.db.backends.postgresql'),
+            'ENGINE': 'django.db.backends.postgresql',
             'NAME': os.getenv('DB_NAME', default='app'),
             'USER': os.getenv('POSTGRES_USER', default='postgres'),
             'PASSWORD': os.getenv('POSTGRES_PASSWORD', default='123456'),
@@ -141,6 +142,11 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ],
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=7),
+    'AUTH_HEADER_TYPES': ('Bearer',),
 }
 
 DJOSER = {

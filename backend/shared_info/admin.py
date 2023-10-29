@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from shared_info.models import (Skill, EducationLevel, Specialization,
-                                Schedule, Course)
+                                Schedule, Course, Location)
 
 
 @admin.register(Schedule)
@@ -16,7 +16,7 @@ class ScheduleAdmin(admin.ModelAdmin):
     Модель:
         - Schedule.
     """
-    list_display = ('name',)
+    list_display = ('id', 'name',)
 
 
 @admin.register(EducationLevel)
@@ -31,7 +31,7 @@ class EducationLevelAdmin(admin.ModelAdmin):
     Модель:
         - EducationLevel.
     """
-    list_display = ('name',)
+    list_display = ('id', 'name',)
 
 
 @admin.register(Specialization)
@@ -46,7 +46,7 @@ class SpecializationAdmin(admin.ModelAdmin):
     Модель:
         - Specialization.
     """
-    list_display = ('name',)
+    list_display = ('id', 'name',)
 
 
 @admin.register(Skill)
@@ -61,7 +61,7 @@ class SkillAdmin(admin.ModelAdmin):
     Модель:
         - Skill.
     """
-    list_display = ('name',)
+    list_display = ('id', 'name',)
 
 
 @admin.register(Course)
@@ -75,4 +75,18 @@ class CourseAdmin(admin.ModelAdmin):
     Модель:
         - Course.
     """
-    list_display = ('name',)
+    list_display = ('id', 'name',)
+
+
+@admin.register(Location)
+class LocationAdmin(admin.ModelAdmin):
+    """
+    Класс администратора для модели Location.
+
+    Параметры:
+        - list_display: Поля, которые будут отображаться в списке городов.
+
+    Модель:
+        - Location.
+    """
+    list_display = ('id', 'name',)

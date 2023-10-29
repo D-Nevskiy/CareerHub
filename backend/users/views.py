@@ -5,13 +5,15 @@ from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
+from api.v1.permissions import IsAdminUser
+from core.pagination import CustomPagination
 from users.models import User
 from users.serializers import CustomUserSerializer
 
 
 class CustomUserViewSet(UserViewSet):
     """
-    Пользовательский ViewSet для работы с пользователями.
+    Кастомный ViewSet для работы с пользователями.
 
     Этот ViewSet предоставляет эндпоинты для управления пользователями,
     включая активацию.
@@ -33,6 +35,15 @@ class CustomUserViewSet(UserViewSet):
     queryset = User.objects.all()
     serializer_class = CustomUserSerializer
     permission_classes = [AllowAny]
+    pagination_class = CustomPagination
+
+    def get_permissions(self):
+        """
+        Возвращает соответствующий сериализатор в зависимости от действия.
+        """
+        if self.action == 'list':
+            return (IsAdminUser(),)
+        return self.permission_classes
 
     @action(
         methods=['get'], detail=False,

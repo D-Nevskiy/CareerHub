@@ -15,13 +15,15 @@ class CustomUserSerializer(UserSerializer):
             'telegram',
             'phone_number',
             'company',
-            'password'
+            'password',
+            'is_active'
         )
         extra_kwargs = {
             'password': {'write_only': True},
             'telegram': {'required': False},
             'phone_number': {'required': False},
-            'company': {'required': False}
+            'company': {'required': False},
+            'is_active': {'required': False, 'read_only': True}
         }
 
     def create(self, validated_data):
