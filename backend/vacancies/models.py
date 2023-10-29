@@ -59,6 +59,12 @@ class Vacancy(models.Model):
         auto_now_add=True,
         editable=False
     )
+    salary = models.CharField(
+        verbose_name='Зарплата',
+        max_length=VACANCY_NAME_LENGTH,
+        null=False,
+        help_text='Введите зарплату или зарплатную вилку'
+    )
     schedule = models.ManyToManyField(
         Schedule,
         related_name='vacancies',

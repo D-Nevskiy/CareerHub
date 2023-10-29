@@ -1,14 +1,17 @@
 from typing import Any, Tuple, Dict
-
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from django.shortcuts import get_object_or_404
+
 from rest_framework.response import Response
-from rest_framework.status import HTTP_404_NOT_FOUND
+from rest_framework.status import HTTP_404_NOT_FOUND, HTTP_403_FORBIDDEN
 from rest_framework.viewsets import ReadOnlyModelViewSet, ModelViewSet, ViewSet
 
-from api.v1.permissions import IsAuthorOrAdmin, IsVacancyAuthorOrAdmin
+from api.v1.permissions import (IsAuthorOrAdmin, IsVacancyAuthorOrAdmin,
+                                IsAdminUser)
 from api.v1.serializers import (StudentSerializer, StudentDetailSerializer,
                                 VacancySerializer, VacancyReadSerializer,
                                 MatchingStudentSerializer)
+from core.pagination import CustomPagination
 from students.models import Student
 from vacancies.models import Vacancy
 
@@ -21,10 +24,18 @@ class StudentViewSet(ReadOnlyModelViewSet):
 
     Attributes:
         - queryset: Запрос, возвращающий все объекты Student.
-        - serializer_class: Сериализатор, используемый для преобразования
-        данных студентов.
+        - pagination_class: Кастомный класс пагинации.
     """
     queryset = Student.objects.all()
+    pagination_class = CustomPagination
+
+    def get_permissions(self):
+        """
+        Возвращает соответствующий permission в зависимости от действия.
+        """
+        if self.action == 'list':
+            return (IsAdminUser(),)
+        return (IsAuthenticatedOrReadOnly(),)
 
     def get_serializer_class(self):
         """
@@ -44,9 +55,9 @@ class VacancyViewSet(ModelViewSet):
     Просмотр, редактирование и удаление вакансий доступно только их авторам.
 
     Attributes:
-        - queryset: Запрос, возвращающий все объекты Vacancy.
         - serializer_class: Сериализатор, используемый для преобразования
         данных ваканций.
+        - pagination_class: Кастомный класс пагинации.
 
     Permissions:
         - permission_classes: Список классов разрешений для ViewSet.
@@ -56,8 +67,27 @@ class VacancyViewSet(ModelViewSet):
         - perform_create(self, serializer, **kwargs): Сохраняет автора вакансии.
         - update(self, request, *args, **kwargs): Обновляет вакансию.
     """
-    queryset = Vacancy.objects.all()
     permission_classes = (IsAuthorOrAdmin,)
+    pagination_class = CustomPagination
+
+    def get_queryset(self):
+        """
+        Возвращает queryset вакансий в зависимости от пользователя.
+
+        Если пользователь - администратор, возвращаются все вакансии.
+        В противном случае возвращаются только вакансии,
+        принадлежащие пользователю.
+
+        Returns:
+            QuerySet: QuerySet вакансий в соответствии с правами
+            доступа пользователя.
+        """
+        user = self.request.user
+
+        if user.is_admin:
+            return Vacancy.objects.all()
+
+        return Vacancy.objects.filter(author=user)
 
     def get_serializer_class(self):
         """
@@ -109,6 +139,10 @@ class MatchingStudentsViewSet(ViewSet):
 
     Список доступен только для автора вакансии и администраторов.
 
+    Attributes:
+        - permission_classes: Список классов разрешений для ViewSet.
+        - pagination_class: Кастомный класс пагинации.
+
     Methods:
         - list(request, vacancy_id): Возвращает список студентов, подходящих
         для указанной вакансии.
@@ -121,6 +155,7 @@ class MatchingStudentsViewSet(ViewSet):
         Response: Список студентов, подходящих для вакансии.
     """
     permission_classes = (IsVacancyAuthorOrAdmin,)
+    pagination_class = CustomPagination
 
     @staticmethod
     def list(request: Any, vacancy_id: int) -> Response:
