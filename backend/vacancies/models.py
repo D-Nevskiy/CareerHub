@@ -82,7 +82,7 @@ class Vacancy(models.Model):
     required_skills = models.ManyToManyField(
         Skill,
         related_name='vacancies',
-        through='vacancies.VacancySkills',
+        through='vacancies.VacancySkill',
         verbose_name='Ключевые навыки',
         help_text='Выберите желаемые ключевые навыки'
     )
@@ -102,7 +102,7 @@ class Vacancy(models.Model):
         return self.name
 
 
-class VacancySkills(models.Model):
+class VacancySkill(models.Model):
     """
     Модель, представляющая связь между вакансией и ключевыми навыками.
 
@@ -121,13 +121,13 @@ class VacancySkills(models.Model):
         Vacancy,
         on_delete=models.CASCADE,
         verbose_name='Вакансия',
-        related_name='vacancy_skills'
+        related_name='vacancy_skill'
     )
     skill = models.ForeignKey(
         Skill,
         on_delete=models.CASCADE,
         verbose_name='Скил в вакансии',
-        related_name='vacancy_skills'
+        related_name='vacancy_skill'
     )
 
     class Meta:

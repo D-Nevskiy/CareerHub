@@ -9,6 +9,7 @@ from core.constants.students import (NAME_LENGTH, EMAIL_LENGTH,
 from core.validators import validate_phone_number
 from shared_info.models import (Skill, EducationLevel, Specialization,
                                 Schedule, Course, Location)
+from users.models import User
 
 
 class Student(models.Model):
@@ -226,3 +227,13 @@ class StudentSchedule(models.Model):
 
     def __str__(self):
         return f'{self.student} – {self.schedule}'
+
+
+class FavoriteStudent(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+
+
+class CompareStudent(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)

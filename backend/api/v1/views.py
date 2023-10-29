@@ -1,9 +1,12 @@
 from typing import Any, Tuple, Dict
 
 from django.shortcuts import get_object_or_404
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework.decorators import action
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny
 from rest_framework.response import Response
-from rest_framework.status import HTTP_404_NOT_FOUND
+from rest_framework.status import (HTTP_404_NOT_FOUND, HTTP_201_CREATED,
+                                   HTTP_204_NO_CONTENT, HTTP_400_BAD_REQUEST,
+                                   HTTP_200_OK)
 from rest_framework.viewsets import ReadOnlyModelViewSet, ModelViewSet, ViewSet
 
 from api.v1.permissions import (IsAuthorOrAdmin, IsVacancyAuthorOrAdmin,
@@ -13,7 +16,7 @@ from api.v1.serializers import (StudentSerializer, StudentDetailSerializer,
                                 MatchingStudentSerializer,
                                 VacancySmallReadSerializer)
 from core.pagination import CustomPagination
-from students.models import Student
+from students.models import Student, FavoriteStudent, CompareStudent
 from vacancies.models import Vacancy
 
 
@@ -185,3 +188,126 @@ class MatchingStudentsViewSet(ViewSet):
         except Vacancy.DoesNotExist:
             return Response({"detail": "Вакансия не найдена"},
                             status=HTTP_404_NOT_FOUND)
+
+
+class FavoriteStudentViewSet(ViewSet):
+    """
+    ViewSet для управления избранными студентами.
+
+    Методы:
+        - post(request, student_id): Добавляет студента в избранное.
+        - delete(request, student_id): Удаляет студента из избранного.
+
+    Permissions:
+        - Доступно только авторизованным пользователям.
+
+    Attributes:
+        - request: Запрос пользователя.
+        - student_id: ID студента, который добавляется в или удаляется
+        из избранного.
+
+    Returns:
+        - HTTP_201_CREATED: Если студент успешно добавлен в избранное.
+        - HTTP_400_BAD_REQUEST: Если студент уже находится в
+        избранном (при добавлении).
+        - HTTP_204_NO_CONTENT: Если студент успешно удален из избранного.
+        - HTTP_404_NOT_FOUND: Если студент не найден в
+        избранном (при удалении).
+    """
+    @staticmethod
+    def post(request, student_id: int) -> Response:
+        """Добавляет студента в избранное."""
+        student = get_object_or_404(Student, pk=student_id)
+        favorite, created = FavoriteStudent.objects.get_or_create(
+            user=request.user,
+            student=student
+        )
+        if created:
+            return Response({"detail": "Студент добавлен в избранное"},
+                            status=HTTP_201_CREATED)
+        return Response({"detail": "Студент уже в избранном"},
+                        status=HTTP_400_BAD_REQUEST)
+
+    @staticmethod
+    def delete(request, student_id: int) -> Response:
+        """Удаляет студента из избранного."""
+        student = get_object_or_404(Student, pk=student_id)
+        favorite = FavoriteStudent.objects.filter(user=request.user,
+                                                  student=student)
+        if favorite:
+            favorite.delete()
+            return Response({"detail": "Студент удален из избранного"},
+                            status=HTTP_204_NO_CONTENT)
+        return Response({"detail": "Студент не найден в избранном"},
+                        status=HTTP_404_NOT_FOUND)
+
+
+class CompareStudentViewSet(ViewSet):
+    """
+    ViewSet для управления списком сравнения студентов.
+
+    Методы:
+        - get_compare(request): Возвращает список студентов в списке сравнения.
+        - post(request, student_id): Добавляет студента в список сравнения.
+        - delete(request, student_id): Удаляет студента из списка сравнения.
+
+    Permissions:
+        - Доступно только авторизованным пользователям.
+
+    Attributes:
+        - request: Запрос пользователя.
+        - student_id: ID студента, который добавляется в или удаляется
+        из списка сравнения.
+
+    Returns:
+        - HTTP_200_OK: Возвращает список студентов в списке
+        сравнения (при get_compare).
+        - HTTP_201_CREATED: Если студент успешно добавлен в список сравнения.
+        - HTTP_400_BAD_REQUEST: Если студент уже находится в списке
+        сравнения (при добавлении).
+        - HTTP_204_NO_CONTENT: Если студент успешно удален из списка сравнения.
+        - HTTP_404_NOT_FOUND: Если студент не найден в списке
+        сравнения (при удалении).
+    """
+    @staticmethod
+    def get_compare(request) -> Response:
+        """Возвращает список студентов в списке сравнения."""
+        compare_students = CompareStudent.objects.filter(user=request.user)
+        student_ids = [compare.student_id for compare in compare_students]
+        students = Student.objects.filter(pk__in=student_ids)
+        serializer = StudentDetailSerializer(students, many=True, context={'request': request})
+
+        return Response(serializer.data, status=HTTP_200_OK)
+
+    @staticmethod
+    def post(request, student_id: int) -> Response:
+        """Добавляет студента в список сравнения."""
+        student = get_object_or_404(Student, pk=student_id)
+        compare, created = CompareStudent.objects.get_or_create(
+            user=request.user,
+            student=student
+        )
+        if created:
+            return Response(
+                {"detail": "Студент добавлен в список для сравнения"},
+                status=HTTP_201_CREATED
+            )
+        return Response({"detail": "Студент уже в списке для сравнения"},
+                        status=HTTP_400_BAD_REQUEST)
+
+    @staticmethod
+    def delete(request, student_id: int) -> Response:
+        """Удаляет студента из списка сравнения."""
+        student = get_object_or_404(Student, pk=student_id)
+        favorite = FavoriteStudent.objects.filter(user=request.user,
+                                                  student=student)
+        if favorite:
+            favorite.delete()
+            return Response(
+                {"detail": "Студент удалён из списка для сравнения"},
+                status=HTTP_204_NO_CONTENT
+            )
+        return Response(
+            {"detail": "Студент не найден в списке для сравнения"},
+            status=HTTP_404_NOT_FOUND
+        )
