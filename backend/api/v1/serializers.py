@@ -636,16 +636,34 @@ class VacancySerializer(ModelSerializer):
 
 
 # ----------------------------------------------------------------------------
-#                       Students serializers
+#                       Matching serializers
 # ----------------------------------------------------------------------------
 
 
 class MatchingStudentSerializer(StudentSerializer):
+    """
+    Сериализатор для студентов, с дополнительным полем matching_percentage,
+    представляющим процентное соотношение скиллов студента
+    к скиллам из вакансии.
+
+    Attributes:
+        matching_percentage (int): Поле, представляющее процентное соотношение
+            скиллов студента к скиллам из вакансии.
+    """
     matching_percentage = SerializerMethodField()
 
     def get_matching_percentage(self, student):
-        # Здесь идёт рассчёт процентного соотношения скиллов
-        # из вакансии со скиллами студента и возврат его значения.
+        """
+        Рассчитывает процентное соотношение скиллов студента к
+        скиллам из вакансии и возвращает его значение.
+
+        Args:
+            student (Student): Объект студента, для которого рассчитывается
+                процентное соотношение.
+
+        Returns:
+            int: Процентное соотношение скиллов студента к скиллам из вакансии.
+        """
         vacancy_id = self.context['vacancy_id']
         vacancy = Vacancy.objects.get(id=vacancy_id)
         required_skills = vacancy.required_skills.all()

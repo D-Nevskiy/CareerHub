@@ -2,8 +2,10 @@ import requests
 from djoser.views import UserViewSet
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework.decorators import action
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAdminUser
 from rest_framework.response import Response
+from rest_framework.status import HTTP_403_FORBIDDEN
+
 
 from users.models import User
 from users.serializers import CustomUserSerializer
@@ -33,6 +35,11 @@ class CustomUserViewSet(UserViewSet):
     queryset = User.objects.all()
     serializer_class = CustomUserSerializer
     permission_classes = [AllowAny]
+
+    def get_permissions(self):
+        if self.action == 'list':
+            return (IsAdminUser(),)
+        return self.permission_classes
 
     @action(
         methods=['get'], detail=False,

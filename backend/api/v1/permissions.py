@@ -1,17 +1,14 @@
-from rest_framework import permissions
+from rest_framework.permissions import BasePermission
 
 from vacancies.models import Vacancy
 
 
-class IsAuthorOrAdmin(permissions.BasePermission):
+class IsAuthorOrAdmin(BasePermission):
     """
     Пользовательское разрешение для доступа только автору и администратору.
 
-    Атрибуты:
-        - message: Сообщение об ошибке, если разрешение не пройдено.
-
-    message:
-        - Сообщение об ошибке.
+    Attributes:
+        message (str): Сообщение об ошибке, выводимое при отказе в доступе.
 
     Методы:
         - has_object_permission(self, request, view, obj): Определяет, имеет ли
@@ -36,13 +33,13 @@ class IsAuthorOrAdmin(permissions.BasePermission):
         return obj.author == request.user or request.user.is_admin
 
 
-class IsVacancyAuthorOrAdmin(permissions.BasePermission):
+class IsVacancyAuthorOrAdmin(BasePermission):
     """
     Пользовательское разрешение для доступа к подбору студентов только
     автору вакансии.
 
-    message:
-        - Сообщение об ошибке.
+    Attributes:
+        message (str): Сообщение об ошибке, выводимое при отказе в доступе.
 
     Методы:
         - has_permission(self, request, view): Проверяет, имеет ли пользователь
@@ -63,3 +60,30 @@ class IsVacancyAuthorOrAdmin(permissions.BasePermission):
         if request.user.is_anonymous:
             return False
         return vacancy.author == request.user or request.user.is_admin
+
+
+class IsAdminUser(BasePermission):
+    """
+    Проверяет, имеет ли пользователь статус администратора
+    для доступа к ресурсу.
+
+    Attributes:
+        message (str): Сообщение об ошибке, выводимое при отказе в доступе.
+
+    Methods:
+        has_permission(self, request, view): Проверяет, имеет ли пользователь
+        статус администратора.
+
+    Args:
+        request (HttpRequest): Объект запроса пользователя.
+        view (APIView): Представление, к которому применяется разрешение.
+
+    Returns:
+        bool: True, если пользователь имеет статус администратора, и False в
+        противном случае.
+    """
+    message = ("Доступ к данной странице предоставляется "
+               "только администраторам.")
+
+    def has_permission(self, request, view):
+        return request.user.is_admin
