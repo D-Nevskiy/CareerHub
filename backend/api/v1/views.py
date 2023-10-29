@@ -1,8 +1,7 @@
 from typing import Any, Tuple, Dict
 
 from django.shortcuts import get_object_or_404
-from rest_framework.decorators import action
-from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 from rest_framework.status import (HTTP_404_NOT_FOUND, HTTP_201_CREATED,
                                    HTTP_204_NO_CONTENT, HTTP_400_BAD_REQUEST,
@@ -165,29 +164,34 @@ class MatchingStudentsViewSet(ViewSet):
 
     @staticmethod
     def list(request: Any, vacancy_id: int) -> Response:
-        try:
-            vacancy = get_object_or_404(Vacancy, id=vacancy_id)
-            required_skills = vacancy.required_skills.all()
+        vacancy = get_object_or_404(Vacancy, id=vacancy_id)
+        required_skills = vacancy.required_skills.all()
 
-            matching_students = Student.objects.filter(
-                skills__in=required_skills
-            ).distinct()
-            matching_students = sorted(
-                matching_students,
-                key=lambda student: len(set(required_skills)
-                                        & set(student.skills.all())),
-                reverse=True
-            )
+        matching_students = Student.objects.filter(
+            skills__in=required_skills)
 
-            serializer = MatchingStudentSerializer(
-                matching_students,
-                many=True,
-                context={'vacancy_id': vacancy_id}
-            )
-            return Response(serializer.data)
-        except Vacancy.DoesNotExist:
-            return Response({"detail": "Вакансия не найдена"},
-                            status=HTTP_404_NOT_FOUND)
+        filters = {}
+        for param in ['location', 'education_level', 'schedule']:
+            value = request.query_params.get(param)
+            if value:
+                filters[param] = value
+
+        if filters:
+            matching_students = matching_students.filter(**filters)
+
+        matching_students = sorted(
+            matching_students,
+            key=lambda student: len(
+                set(required_skills) & set(student.skills.all())),
+            reverse=True
+        )
+
+        serializer = MatchingStudentSerializer(
+            matching_students,
+            many=True,
+            context={'vacancy_id': vacancy_id}
+        )
+        return Response(serializer.data)
 
 
 class FavoriteStudentViewSet(ViewSet):
@@ -195,6 +199,7 @@ class FavoriteStudentViewSet(ViewSet):
     ViewSet для управления избранными студентами.
 
     Методы:
+        - get(request): Предоставляет список избранных студентов.
         - post(request, student_id): Добавляет студента в избранное.
         - delete(request, student_id): Удаляет студента из избранного.
 
@@ -214,6 +219,18 @@ class FavoriteStudentViewSet(ViewSet):
         - HTTP_404_NOT_FOUND: Если студент не найден в
         избранном (при удалении).
     """
+    @staticmethod
+    def get_favorites(request) -> Response:
+        """Предоставляет список избранных студентов."""
+        favorites = FavoriteStudent.objects.filter(user=request.user)
+
+        student_ids = [favorite.student_id for favorite in favorites]
+        students = Student.objects.filter(pk__in=student_ids)
+        serializer = StudentSerializer(students, many=True,
+                                       context={'request': request})
+
+        return Response(serializer.data, status=HTTP_200_OK)
+
     @staticmethod
     def post(request, student_id: int) -> Response:
         """Добавляет студента в избранное."""
