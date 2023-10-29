@@ -2,7 +2,8 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
 from api.v1.views import (StudentViewSet, VacancyViewSet,
-                          MatchingStudentsViewSet)
+                          MatchingStudentsViewSet, FavoriteStudentViewSet,
+                          CompareStudentViewSet)
 from users.views import CustomUserViewSet
 
 router = DefaultRouter()
@@ -23,4 +24,12 @@ urlpatterns = [
         MatchingStudentsViewSet.as_view({'get': 'list'}),
         name='matching-students-list'
     ),
+    path('favorite/<int:student_id>/', FavoriteStudentViewSet.as_view(
+        {'post': 'post', 'delete': 'delete'})
+         ),
+    path('compare/<int:student_id>/', CompareStudentViewSet.as_view(
+        {'post': 'post', 'delete': 'delete'})
+         ),
+    path('compare/', CompareStudentViewSet.as_view({'get': 'get_compare'})),
+
 ]

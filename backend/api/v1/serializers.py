@@ -1,14 +1,14 @@
 from typing import Dict, List
-
+from django.shortcuts import get_object_or_404
 from rest_framework.fields import IntegerField, SerializerMethodField
 from rest_framework.serializers import (ModelSerializer, CharField,
                                         ValidationError)
 
 from shared_info.models import (Schedule, EducationLevel, Course,
                                 Specialization, Location)
-from students.models import Student, Skill
+from students.models import Student, Skill, FavoriteStudent, CompareStudent
 from users.serializers import CustomUserSerializer
-from vacancies.models import (Vacancy, VacancySkills, VacancyEducationLevel,
+from vacancies.models import (Vacancy, VacancySkill, VacancyEducationLevel,
                               VacancySchedule, VacancySpecialization)
 
 
@@ -124,37 +124,6 @@ class LocationSerializer(ModelSerializer):
 # ----------------------------------------------------------------------------
 
 
-class StudentSerializer(ModelSerializer):
-    """
-    Сериализатор для модели Student.
-
-    Attributes:
-        - skills (SkillSerializer, read-only): Сериализатор для списка
-        навыков студента.
-        - schedule (ScheduleSerializer, read-only): Сериализатор для списка
-        графиков занятости студента.
-        - location (LocationSerializer, read-only): Сериализатор для
-        местоположения студента.
-    """
-    skills = SkillSerializer(many=True, read_only=True)
-    schedule = ScheduleSerializer(many=True, read_only=True)
-    location = LocationSerializer(read_only=True)
-
-    class Meta:
-        model = Student
-        fields = (
-            'id',
-            'avatar',
-            'last_name',
-            'first_name',
-            'email',
-            'location',
-            'telegram',
-            'schedule',
-            'skills'
-        )
-
-
 class StudentDetailSerializer(ModelSerializer):
     """
     Сериализатор для модели Student с детальной информацией.
@@ -181,6 +150,8 @@ class StudentDetailSerializer(ModelSerializer):
     education_level = EducationLevelSerializer(read_only=True)
     course = CourseSerializer(read_only=True)
     location = LocationSerializer(read_only=True)
+    is_favorited = SerializerMethodField()
+    is_in_compare_list = SerializerMethodField()
 
     class Meta:
         model = Student
@@ -200,7 +171,52 @@ class StudentDetailSerializer(ModelSerializer):
             'course',
             'education_level',
             'schedule',
-            'skills'
+            'skills',
+            'is_favorited',
+            'is_in_compare_list'
+        )
+
+    def get_is_favorited(self, student: Student) -> bool:
+        """Указывает, добавлен ли студент в избранные текущим пользователем."""
+        return ((user := self.context.get('request').user)
+                and user.is_authenticated
+                and FavoriteStudent.objects.filter(user=user,
+                                                   student=student).exists())
+
+    def get_is_in_compare_list(self, student: Student) -> bool:
+        """Указывает, добавлен ли студент в сравнение текущим пользователем."""
+        return ((user := self.context.get('request').user)
+                and user.is_authenticated
+                and CompareStudent.objects.filter(user=user,
+                                                  student=student).exists())
+
+
+class StudentSerializer(StudentDetailSerializer):
+    """
+    Сериализатор для модели Student.
+
+    Attributes:
+        - skills (SkillSerializer, read-only): Сериализатор для списка
+        навыков студента.
+        - schedule (ScheduleSerializer, read-only): Сериализатор для списка
+        графиков занятости студента.
+        - location (LocationSerializer, read-only): Сериализатор для
+        местоположения студента.
+    """
+
+    class Meta:
+        model = Student
+        fields = (
+            'id',
+            'avatar',
+            'last_name',
+            'first_name',
+            'email',
+            'location',
+            'telegram',
+            'schedule',
+            'skills',
+            'is_favorited'
         )
 
 
@@ -270,7 +286,7 @@ class VacancySmallReadSerializer(VacancyReadSerializer):
         )
 
 
-class VacancySkillsSerializer(ModelSerializer):
+class VacancySkillSerializer(ModelSerializer):
     """
     Сериализатор для связи между моделями Vacancy и Skill.
 
@@ -280,7 +296,7 @@ class VacancySkillsSerializer(ModelSerializer):
     id = IntegerField(write_only=True)
 
     class Meta:
-        model = VacancySkills
+        model = VacancySkill
         fields = (
             'id',
         )
@@ -342,7 +358,7 @@ class VacancySerializer(ModelSerializer):
         - author (CustomUserSerializer, read-only): Сериализатор для
         автора вакансии.
         - id (IntegerField, read-only): Идентификатор вакансии.
-        - required_skills (VacancySkillsSerializer, write-only): Сериализатор
+        - required_skills (VacancySkillSerializer, write-only): Сериализатор
         для связи с требуемыми навыками.
         - schedule (VacancyScheduleSerializer, write-only): Сериализатор для
         связи с графиками работы.
@@ -353,7 +369,7 @@ class VacancySerializer(ModelSerializer):
     """
     author = CustomUserSerializer(read_only=True)
     id = IntegerField(read_only=True)
-    required_skills = VacancySkillsSerializer(many=True)
+    required_skills = VacancySkillSerializer(many=True)
     schedule = VacancyScheduleSerializer(many=True)
     specialization = VacancySpecializationSerializer(many=True)
     required_education_level = VacancyEducationLevelSerializer(many=True)
@@ -409,80 +425,29 @@ class VacancySerializer(ModelSerializer):
             ValidationError: Если указанные навыки, грейды, графики работы
             или специализации не существуют.
         """
+        essentials = [
+            (skills, Skill, 'skill'),
+            (levels, EducationLevel, 'education_level'),
+            (schedules, Schedule, 'schedule'),
+            (specializations, Specialization, 'specialization')
+        ]
 
-        # Создание связи между вакансией и скилами.
+        for items, model, field in essentials:
+            compositions = []
+            for item in items:
+                item_id = item['id']
+                try:
+                    item_obj = model.objects.get(id=item_id)
+                except model.DoesNotExist:
+                    raise ValidationError(
+                        {f'{model.__name__} с ID {item_id} не существует.'})
 
-        required_skills = []
-        for skill in skills:
-            try:
-                skill_obj = Skill.objects.get(id=skill['id'])
-            except Skill.DoesNotExist:
-                raise ValidationError(
-                    {"skills": f'Скилла с ID {skill["id"]}'
-                               f' не существует.'})
+                composition = (f'Vacancy{model.__name__}(vacancy=vacancy, '
+                               f'{field}=item_obj)')
+                compositions.append(eval(composition))
 
-            composition = VacancySkills(
-                vacancy=vacancy,
-                skill=skill_obj,
-            )
-            required_skills.append(composition)
-        VacancySkills.objects.bulk_create(required_skills)
-
-        # Создание связи между вакансией и грейдами.
-
-        education_levels = []
-        for level in levels:
-            try:
-                level_obj = EducationLevel.objects.get(id=level['id'])
-            except EducationLevel.DoesNotExist:
-                raise ValidationError(
-                    {"education_level": f'Грейда с ID {level["id"]}'
-                                        f' не существует.'})
-
-            composition = VacancyEducationLevel(
-                vacancy=vacancy,
-                education_level=level_obj,
-            )
-            education_levels.append(composition)
-        VacancyEducationLevel.objects.bulk_create(education_levels)
-
-        # Создание связи между вакансией и графиками.
-
-        vacancy_schedules = []
-        for schedule in schedules:
-            try:
-                schedule_obj = Schedule.objects.get(id=schedule['id'])
-            except Schedule.DoesNotExist:
-                raise ValidationError(
-                    {"schedule": f'Графика работы с ID {schedule["id"]}'
-                                 f' не существует.'})
-
-            composition = VacancySchedule(
-                vacancy=vacancy,
-                schedule=schedule_obj,
-            )
-            vacancy_schedules.append(composition)
-        VacancySchedule.objects.bulk_create(vacancy_schedules)
-
-        # Создание связи между вакансией и специализациями.
-
-        vacancy_specializations = []
-        for specialization in specializations:
-            try:
-                specialization_obj = Specialization.objects.get(
-                    id=specialization['id']
-                )
-            except Specialization.DoesNotExist:
-                raise ValidationError(
-                    {"schedule": f'Специализации с ID {specialization["id"]}'
-                                 f' не существует.'})
-
-            composition = VacancySpecialization(
-                vacancy=vacancy,
-                specialization=specialization_obj,
-            )
-            vacancy_specializations.append(composition)
-        VacancySpecialization.objects.bulk_create(vacancy_specializations)
+            composition_model = eval(f'Vacancy{model.__name__}')
+            composition_model.objects.bulk_create(compositions)
 
     def create(self, validated_data: Dict) -> Vacancy:
         """
@@ -505,50 +470,25 @@ class VacancySerializer(ModelSerializer):
         schedules = validated_data.pop('schedule')
         specializations = validated_data.pop('specialization')
 
-        for skill in required_skills:
-
-            skill = skill['id']
-            try:
-                Skill.objects.get(id=skill)
-            except Skill.DoesNotExist:
-                raise ValidationError(
-                    {"required_skills": f"Скила с ID {skill} "
-                                        f"не существует."})
-
-        for level in required_education_level:
-            level = level['id']
-            try:
-                EducationLevel.objects.get(id=level)
-            except EducationLevel.DoesNotExist:
-                raise ValidationError(
-                    {"required_skills": f"Грейда с ID {level} "
-                                        f"не существует."})
-
-        for schedule in schedules:
-            schedule = schedule['id']
-            try:
-                Schedule.objects.get(id=schedule)
-            except Schedule.DoesNotExist:
-                raise ValidationError(
-                    {"required_skills": f"Графика с ID {schedule} "
-                                        f"не существует."})
-
-        for specialization in specializations:
-            specialization = specialization['id']
-            try:
-                Specialization.objects.get(id=specialization)
-            except Specialization.DoesNotExist:
-                raise ValidationError(
-                    {"required_skills": f"Специлазиации с ID {specialization} "
-                                        f"не существует."})
+        for field, model in [
+            ('required_skills', Skill),
+            ('required_education_level', EducationLevel),
+            ('schedule', Schedule),
+            ('specialization', Specialization)
+        ]:
+            for item in validated_data.get(field, []):
+                if not model.objects.filter(id=item['id']).exists():
+                    raise ValidationError(
+                        {field: f"{model.__name__} с ID {item['id']} "
+                                f"не существует."})
 
         vacancy = Vacancy.objects.create(**validated_data)
         self.create_vacancy_essentials(vacancy=vacancy,
                                        skills=required_skills,
                                        levels=required_education_level,
                                        schedules=schedules,
-                                       specializations=specializations
-                                       )
+                                       specializations=specializations)
+
         return vacancy
 
     def update(self, instance, validated_data):
@@ -566,94 +506,34 @@ class VacancySerializer(ModelSerializer):
             ValidationError: Если указанные навыки, грейды, графики работы
             или специализации не существуют.
         """
-
         # Перебираем поля валидированных данных и применяем их к экземпляру
-        for field, value in validated_data.items():
-            # Если поле — список, то осуществляем обновление связанных объектов
-            if field in ['required_skills', 'schedule',
-                         'specialization', 'required_education_level']:
 
-                if field == 'required_skills':
-                    new_skills = []
-                    for skill in value:
-                        skill_id = skill.get('id')
-                        try:
-                            skill = Skill.objects.get(id=skill_id)
-                            new_skills.append(
-                                VacancySkills(vacancy=instance,
-                                              skill=skill))
-                        except Skill.DoesNotExist:
-                            raise ValidationError(
-                                {"required_skills": f"Скила с ID {skill_id} "
-                                                    f"не существует."})
-                    instance.required_skills.clear()
-                    VacancySkills.objects.bulk_create(new_skills)
+        related_fields = {'required_skills': Skill,
+                          'schedule': Schedule,
+                          'specialization': Specialization,
+                          'required_education_level': EducationLevel}
 
-                elif field == 'schedule':
-                    new_schedules = []
-                    for schedule in value:
-                        schedule_id = schedule.get('id')
-                        try:
-                            schedule = Schedule.objects.get(id=schedule_id)
-                            new_schedules.append(
-                                VacancySchedule(vacancy=instance,
-                                                schedule=schedule))
-                        except Schedule.DoesNotExist:
-                            raise ValidationError(
-                                {"schedule": f"Графика с ID {schedule_id} "
-                                             f"не существует."})
-                    instance.schedule.clear()
-                    VacancySchedule.objects.bulk_create(new_schedules)
+        for field, values in validated_data.items():
+            if field in related_fields:
+                new_field = []
+                for value in values:
+                    model = related_fields[field]
+                    value_id = value.get('id')
+                    try:
+                        value_obj = model.objects.get(id=value_id)
+                        new_field.append(value_obj)
+                    except model.DoesNotExist:
+                        raise ValidationError(
+                            {field: f"{model.__name__} с ID {value_id} "
+                                    f"не существует."})
 
-                elif field == 'specialization':
-                    new_specializations = []
-                    for specialization in value:
-                        specialization_id = specialization.get('id')
-                        try:
-                            specialization = Specialization.objects.get(
-                                id=specialization_id
-                            )
-                            new_specializations.append(
-                                VacancySpecialization(
-                                    vacancy=instance,
-                                    specialization=specialization
-                                )
-                            )
-                        except Specialization.DoesNotExist:
-                            raise ValidationError(
-                                {"specialization": f"Специализации с ID "
-                                                   f"{specialization_id} "
-                                                   f"не существует."})
-                    instance.specialization.clear()
-                    VacancySpecialization.objects.bulk_create(
-                        new_specializations
-                    )
+                # Очищаем поле и устанавливаем новые значения
+                getattr(instance, field).clear()
+                getattr(instance, field).set(new_field)
 
-                elif field == 'required_education_level':
-                    new_education_levels = []
-                    for level in value:
-                        level_id = level.get('id')
-                        try:
-                            level = EducationLevel.objects.get(id=level_id)
-                            new_education_levels.append(
-                                VacancyEducationLevel(
-                                    vacancy=instance,
-                                    education_level=level
-                                )
-                            )
-                        except EducationLevel.DoesNotExist:
-                            raise ValidationError(
-                                {"required_education_level": f"Грейда "
-                                                             f"с ID "
-                                                             f"{level_id} не "
-                                                             f"существует."})
-                    instance.required_education_level.clear()
-                    VacancyEducationLevel.objects.bulk_create(
-                        new_education_levels
-                    )
             else:
                 # Для обычных полей просто обновляем их
-                setattr(instance, field, value)
+                setattr(instance, field, values)
 
         instance.save()
         return instance

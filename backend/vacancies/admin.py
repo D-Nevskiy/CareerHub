@@ -1,5 +1,5 @@
 from django.contrib import admin
-from vacancies.models import (Vacancy, VacancySkills, VacancyEducationLevel,
+from vacancies.models import (Vacancy, VacancySkill, VacancyEducationLevel,
                               VacancySpecialization, VacancySchedule)
 
 
@@ -10,8 +10,8 @@ class VacancyAdmin(admin.ModelAdmin):
     search_fields = ('name', 'author__username')
 
 
-@admin.register(VacancySkills)
-class VacancySkillsAdmin(admin.ModelAdmin):
+@admin.register(VacancySkill)
+class VacancySkillAdmin(admin.ModelAdmin):
     list_display = ('id', 'vacancy', 'skill')
     list_filter = ('vacancy', 'skill')
     search_fields = ('vacancy__name', 'skill__name')
