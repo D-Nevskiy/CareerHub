@@ -248,6 +248,28 @@ class VacancyReadSerializer(ModelSerializer):
         )
 
 
+class VacancySmallReadSerializer(VacancyReadSerializer):
+    """
+    Сериализатор для модели Vacancy с краткой информацией для
+    карточного представления.
+
+    Полностью наследуется от VacancyReadSerializer.
+    """
+    class Meta:
+        model = Vacancy
+        fields = (
+            'id',
+            'name',
+            'author',
+            'location',
+            'pub_date',
+            'salary',
+            'schedule',
+            'required_education_level',
+            'required_skills',
+        )
+
+
 class VacancySkillsSerializer(ModelSerializer):
     """
     Сериализатор для связи между моделями Vacancy и Skill.

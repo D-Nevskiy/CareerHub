@@ -1,16 +1,17 @@
 from typing import Any, Tuple, Dict
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
-from django.shortcuts import get_object_or_404
 
+from django.shortcuts import get_object_or_404
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
-from rest_framework.status import HTTP_404_NOT_FOUND, HTTP_403_FORBIDDEN
+from rest_framework.status import HTTP_404_NOT_FOUND
 from rest_framework.viewsets import ReadOnlyModelViewSet, ModelViewSet, ViewSet
 
 from api.v1.permissions import (IsAuthorOrAdmin, IsVacancyAuthorOrAdmin,
                                 IsAdminUser)
 from api.v1.serializers import (StudentSerializer, StudentDetailSerializer,
                                 VacancySerializer, VacancyReadSerializer,
-                                MatchingStudentSerializer)
+                                MatchingStudentSerializer,
+                                VacancySmallReadSerializer)
 from core.pagination import CustomPagination
 from students.models import Student
 from vacancies.models import Vacancy
@@ -29,7 +30,7 @@ class StudentViewSet(ReadOnlyModelViewSet):
     queryset = Student.objects.all()
     pagination_class = CustomPagination
 
-    def get_permissions(self):
+    def get_permissions(self) -> Any:
         """
         Возвращает соответствующий permission в зависимости от действия.
         """
@@ -37,7 +38,7 @@ class StudentViewSet(ReadOnlyModelViewSet):
             return (IsAdminUser(),)
         return (IsAuthenticatedOrReadOnly(),)
 
-    def get_serializer_class(self):
+    def get_serializer_class(self) -> Any:
         """
         Возвращает соответствующий сериализатор в зависимости от действия.
         """
@@ -70,7 +71,7 @@ class VacancyViewSet(ModelViewSet):
     permission_classes = (IsAuthorOrAdmin,)
     pagination_class = CustomPagination
 
-    def get_queryset(self):
+    def get_queryset(self) -> Any:
         """
         Возвращает queryset вакансий в зависимости от пользователя.
 
@@ -89,12 +90,14 @@ class VacancyViewSet(ModelViewSet):
 
         return Vacancy.objects.filter(author=user)
 
-    def get_serializer_class(self):
+    def get_serializer_class(self) -> Any:
         """
         Возвращает соответствующий сериализатор в зависимости от действия.
         """
         if self.action == 'retrieve':
             return VacancyReadSerializer
+        if self.action == 'list':
+            return VacancySmallReadSerializer
         return VacancySerializer
 
     def perform_create(self, serializer, **kwargs: Any) -> None:
