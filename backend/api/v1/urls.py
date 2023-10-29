@@ -27,6 +27,9 @@ urlpatterns = [
     path('favorite/<int:student_id>/', FavoriteStudentViewSet.as_view(
         {'post': 'post', 'delete': 'delete'})
          ),
+    path('favorite/', FavoriteStudentViewSet.as_view(
+        {'get': 'get_favorites'})
+         ),
     path('compare/<int:student_id>/', CompareStudentViewSet.as_view(
         {'post': 'post', 'delete': 'delete'})
          ),
