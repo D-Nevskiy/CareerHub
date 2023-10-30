@@ -1,0 +1,3242 @@
+[
+  {
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+      "name": "Can add log entry",
+      "content_type": 1,
+      "codename": "add_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+      "name": "Can change log entry",
+      "content_type": 1,
+      "codename": "change_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+      "name": "Can delete log entry",
+      "content_type": 1,
+      "codename": "delete_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+      "name": "Can view log entry",
+      "content_type": 1,
+      "codename": "view_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+      "name": "Can add permission",
+      "content_type": 2,
+      "codename": "add_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+      "name": "Can change permission",
+      "content_type": 2,
+      "codename": "change_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+      "name": "Can delete permission",
+      "content_type": 2,
+      "codename": "delete_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+      "name": "Can view permission",
+      "content_type": 2,
+      "codename": "view_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+      "name": "Can add group",
+      "content_type": 3,
+      "codename": "add_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+      "name": "Can change group",
+      "content_type": 3,
+      "codename": "change_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+      "name": "Can delete group",
+      "content_type": 3,
+      "codename": "delete_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+      "name": "Can view group",
+      "content_type": 3,
+      "codename": "view_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+      "name": "Can add content type",
+      "content_type": 4,
+      "codename": "add_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+      "name": "Can change content type",
+      "content_type": 4,
+      "codename": "change_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+      "name": "Can delete content type",
+      "content_type": 4,
+      "codename": "delete_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+      "name": "Can view content type",
+      "content_type": 4,
+      "codename": "view_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+      "name": "Can add session",
+      "content_type": 5,
+      "codename": "add_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+      "name": "Can change session",
+      "content_type": 5,
+      "codename": "change_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+      "name": "Can delete session",
+      "content_type": 5,
+      "codename": "delete_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+      "name": "Can view session",
+      "content_type": 5,
+      "codename": "view_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+      "name": "Can add ????????????",
+      "content_type": 6,
+      "codename": "add_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+      "name": "Can change ????????????",
+      "content_type": 6,
+      "codename": "change_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+      "name": "Can delete ????????????",
+      "content_type": 6,
+      "codename": "delete_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+      "name": "Can view ????????????",
+      "content_type": 6,
+      "codename": "view_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+      "name": "Can add ????",
+      "content_type": 7,
+      "codename": "add_course"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+      "name": "Can change ????",
+      "content_type": 7,
+      "codename": "change_course"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+      "name": "Can delete ????",
+      "content_type": 7,
+      "codename": "delete_course"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+      "name": "Can view ????",
+      "content_type": 7,
+      "codename": "view_course"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+      "name": "Can add ?????",
+      "content_type": 8,
+      "codename": "add_educationlevel"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+      "name": "Can change ?????",
+      "content_type": 8,
+      "codename": "change_educationlevel"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+      "name": "Can delete ?????",
+      "content_type": 8,
+      "codename": "delete_educationlevel"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+      "name": "Can view ?????",
+      "content_type": 8,
+      "codename": "view_educationlevel"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 33,
+    "fields": {
+      "name": "Can add ?????",
+      "content_type": 9,
+      "codename": "add_location"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 34,
+    "fields": {
+      "name": "Can change ?????",
+      "content_type": 9,
+      "codename": "change_location"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 35,
+    "fields": {
+      "name": "Can delete ?????",
+      "content_type": 9,
+      "codename": "delete_location"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 36,
+    "fields": {
+      "name": "Can view ?????",
+      "content_type": 9,
+      "codename": "view_location"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 37,
+    "fields": {
+      "name": "Can add ??????",
+      "content_type": 10,
+      "codename": "add_schedule"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 38,
+    "fields": {
+      "name": "Can change ??????",
+      "content_type": 10,
+      "codename": "change_schedule"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 39,
+    "fields": {
+      "name": "Can delete ??????",
+      "content_type": 10,
+      "codename": "delete_schedule"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 40,
+    "fields": {
+      "name": "Can view ??????",
+      "content_type": 10,
+      "codename": "view_schedule"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 41,
+    "fields": {
+      "name": "Can add ?????",
+      "content_type": 11,
+      "codename": "add_skill"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 42,
+    "fields": {
+      "name": "Can change ?????",
+      "content_type": 11,
+      "codename": "change_skill"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 43,
+    "fields": {
+      "name": "Can delete ?????",
+      "content_type": 11,
+      "codename": "delete_skill"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 44,
+    "fields": {
+      "name": "Can view ?????",
+      "content_type": 11,
+      "codename": "view_skill"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 45,
+    "fields": {
+      "name": "Can add ?????????????",
+      "content_type": 12,
+      "codename": "add_specialization"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 46,
+    "fields": {
+      "name": "Can change ?????????????",
+      "content_type": 12,
+      "codename": "change_specialization"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 47,
+    "fields": {
+      "name": "Can delete ?????????????",
+      "content_type": 12,
+      "codename": "delete_specialization"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 48,
+    "fields": {
+      "name": "Can view ?????????????",
+      "content_type": 12,
+      "codename": "view_specialization"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 49,
+    "fields": {
+      "name": "Can add compare student",
+      "content_type": 13,
+      "codename": "add_comparestudent"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 50,
+    "fields": {
+      "name": "Can change compare student",
+      "content_type": 13,
+      "codename": "change_comparestudent"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 51,
+    "fields": {
+      "name": "Can delete compare student",
+      "content_type": 13,
+      "codename": "delete_comparestudent"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 52,
+    "fields": {
+      "name": "Can view compare student",
+      "content_type": 13,
+      "codename": "view_comparestudent"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 53,
+    "fields": {
+      "name": "Can add ???????",
+      "content_type": 14,
+      "codename": "add_student"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 54,
+    "fields": {
+      "name": "Can change ???????",
+      "content_type": 14,
+      "codename": "change_student"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 55,
+    "fields": {
+      "name": "Can delete ???????",
+      "content_type": 14,
+      "codename": "delete_student"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 56,
+    "fields": {
+      "name": "Can view ???????",
+      "content_type": 14,
+      "codename": "view_student"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 57,
+    "fields": {
+      "name": "Can add ?????? ????????",
+      "content_type": 15,
+      "codename": "add_studentskills"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 58,
+    "fields": {
+      "name": "Can change ?????? ????????",
+      "content_type": 15,
+      "codename": "change_studentskills"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 59,
+    "fields": {
+      "name": "Can delete ?????? ????????",
+      "content_type": 15,
+      "codename": "delete_studentskills"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 60,
+    "fields": {
+      "name": "Can view ?????? ????????",
+      "content_type": 15,
+      "codename": "view_studentskills"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 61,
+    "fields": {
+      "name": "Can add ?????? ?????? ????????",
+      "content_type": 16,
+      "codename": "add_studentschedule"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 62,
+    "fields": {
+      "name": "Can change ?????? ?????? ????????",
+      "content_type": 16,
+      "codename": "change_studentschedule"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 63,
+    "fields": {
+      "name": "Can delete ?????? ?????? ????????",
+      "content_type": 16,
+      "codename": "delete_studentschedule"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 64,
+    "fields": {
+      "name": "Can view ?????? ?????? ????????",
+      "content_type": 16,
+      "codename": "view_studentschedule"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 65,
+    "fields": {
+      "name": "Can add favorite student",
+      "content_type": 17,
+      "codename": "add_favoritestudent"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 66,
+    "fields": {
+      "name": "Can change favorite student",
+      "content_type": 17,
+      "codename": "change_favoritestudent"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 67,
+    "fields": {
+      "name": "Can delete favorite student",
+      "content_type": 17,
+      "codename": "delete_favoritestudent"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 68,
+    "fields": {
+      "name": "Can view favorite student",
+      "content_type": 17,
+      "codename": "view_favoritestudent"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 69,
+    "fields": {
+      "name": "Can add ????????",
+      "content_type": 18,
+      "codename": "add_vacancy"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 70,
+    "fields": {
+      "name": "Can change ????????",
+      "content_type": 18,
+      "codename": "change_vacancy"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 71,
+    "fields": {
+      "name": "Can delete ????????",
+      "content_type": 18,
+      "codename": "delete_vacancy"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 72,
+    "fields": {
+      "name": "Can view ????????",
+      "content_type": 18,
+      "codename": "view_vacancy"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 73,
+    "fields": {
+      "name": "Can add ??????????? ?????????????",
+      "content_type": 19,
+      "codename": "add_vacancyspecialization"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 74,
+    "fields": {
+      "name": "Can change ??????????? ?????????????",
+      "content_type": 19,
+      "codename": "change_vacancyspecialization"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 75,
+    "fields": {
+      "name": "Can delete ??????????? ?????????????",
+      "content_type": 19,
+      "codename": "delete_vacancyspecialization"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 76,
+    "fields": {
+      "name": "Can view ??????????? ?????????????",
+      "content_type": 19,
+      "codename": "view_vacancyspecialization"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 77,
+    "fields": {
+      "name": "Can add ????? ? ????????",
+      "content_type": 20,
+      "codename": "add_vacancyskill"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 78,
+    "fields": {
+      "name": "Can change ????? ? ????????",
+      "content_type": 20,
+      "codename": "change_vacancyskill"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 79,
+    "fields": {
+      "name": "Can delete ????? ? ????????",
+      "content_type": 20,
+      "codename": "delete_vacancyskill"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 80,
+    "fields": {
+      "name": "Can view ????? ? ????????",
+      "content_type": 20,
+      "codename": "view_vacancyskill"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 81,
+    "fields": {
+      "name": "Can add ?????? ?????? ? ????????",
+      "content_type": 21,
+      "codename": "add_vacancyschedule"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 82,
+    "fields": {
+      "name": "Can change ?????? ?????? ? ????????",
+      "content_type": 21,
+      "codename": "change_vacancyschedule"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 83,
+    "fields": {
+      "name": "Can delete ?????? ?????? ? ????????",
+      "content_type": 21,
+      "codename": "delete_vacancyschedule"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 84,
+    "fields": {
+      "name": "Can view ?????? ?????? ? ????????",
+      "content_type": 21,
+      "codename": "view_vacancyschedule"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 85,
+    "fields": {
+      "name": "Can add ????? ? ????????",
+      "content_type": 22,
+      "codename": "add_vacancyeducationlevel"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 86,
+    "fields": {
+      "name": "Can change ????? ? ????????",
+      "content_type": 22,
+      "codename": "change_vacancyeducationlevel"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 87,
+    "fields": {
+      "name": "Can delete ????? ? ????????",
+      "content_type": 22,
+      "codename": "delete_vacancyeducationlevel"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 88,
+    "fields": {
+      "name": "Can view ????? ? ????????",
+      "content_type": 22,
+      "codename": "view_vacancyeducationlevel"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": {
+      "app_label": "admin",
+      "model": "logentry"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": {
+      "app_label": "auth",
+      "model": "permission"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": {
+      "app_label": "auth",
+      "model": "group"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": {
+      "app_label": "contenttypes",
+      "model": "contenttype"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": {
+      "app_label": "sessions",
+      "model": "session"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": {
+      "app_label": "users",
+      "model": "user"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": {
+      "app_label": "shared_info",
+      "model": "course"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": {
+      "app_label": "shared_info",
+      "model": "educationlevel"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 9,
+    "fields": {
+      "app_label": "shared_info",
+      "model": "location"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 10,
+    "fields": {
+      "app_label": "shared_info",
+      "model": "schedule"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 11,
+    "fields": {
+      "app_label": "shared_info",
+      "model": "skill"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 12,
+    "fields": {
+      "app_label": "shared_info",
+      "model": "specialization"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 13,
+    "fields": {
+      "app_label": "students",
+      "model": "comparestudent"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 14,
+    "fields": {
+      "app_label": "students",
+      "model": "student"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 15,
+    "fields": {
+      "app_label": "students",
+      "model": "studentskills"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 16,
+    "fields": {
+      "app_label": "students",
+      "model": "studentschedule"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 17,
+    "fields": {
+      "app_label": "students",
+      "model": "favoritestudent"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 18,
+    "fields": {
+      "app_label": "vacancies",
+      "model": "vacancy"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 19,
+    "fields": {
+      "app_label": "vacancies",
+      "model": "vacancyspecialization"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 20,
+    "fields": {
+      "app_label": "vacancies",
+      "model": "vacancyskill"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 21,
+    "fields": {
+      "app_label": "vacancies",
+      "model": "vacancyschedule"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 22,
+    "fields": {
+      "app_label": "vacancies",
+      "model": "vacancyeducationlevel"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "0b5iz64chjztghnov5lb64i9rrd8ch6t",
+    "fields": {
+      "session_data": ".eJxVjDsOwjAQBe_iGln-rmVKes5g7a5tHECOFCcV4u4QKQW0b2beSyTc1pa2UZY0ZXEWWpx-N0J-lL6DfMd-myXPfV0mkrsiDzrkdc7leTncv4OGo31rpUsFaxBIh-oNKktQI7poNZhKgU0F44EBFFlnPVttosLKmVVQjsT7A86QN1Q:1qxCS4:jb8-KqhpAO-fOEvoS-l6HkSwLJ-RrYJKX-wY3FbsF4w",
+      "expire_date": "2023-11-12T20:32:04.852Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "p3ekmlwh0pwxxgih1g6z5xpi7te8rvgf",
+    "fields": {
+      "session_data": ".eJxVjEEOwiAQRe_C2hCYAmVcuvcMZIahUjVtUtqV8e7apAvd_vfef6lE21rT1sqSRlFnZdXpd2PKjzLtQO403Wad52ldRta7og_a9HWW8rwc7t9BpVa_dUbwQ4cBjRHXm8zIxllPWKRncBLIGBuBAwSWguJBEAYXOHaRIIJ6fwDMxTdC:1qxCPV:siNYTTXcDjUhyDln0OvPjp9yP_EpK3MCAM4nCmk3xac",
+      "expire_date": "2023-11-12T20:29:25.159Z"
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$PGksBApuU01X5gtUrceLwY$W46KzU0HjdI8TXxAFUNp3DmsmTqXGFKqGBderqfq5Xw=",
+      "last_login": "2023-10-29T20:32:04.851Z",
+      "is_superuser": true,
+      "is_staff": true,
+      "date_joined": "2023-10-29T20:26:23.032Z",
+      "avatar": "",
+      "first_name": "",
+      "last_name": "",
+      "email": "anarant91@yandex.ru",
+      "telegram": "",
+      "phone_number": "",
+      "company": "",
+      "role": "user",
+      "is_active": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 1,
+    "fields": {
+      "name": "Angular.js"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 2,
+    "fields": {
+      "name": "Ansible"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 3,
+    "fields": {
+      "name": "C"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 4,
+    "fields": {
+      "name": "C#"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 5,
+    "fields": {
+      "name": "C++"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 6,
+    "fields": {
+      "name": "CI/CD"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 7,
+    "fields": {
+      "name": "CSS"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 8,
+    "fields": {
+      "name": "Django"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 9,
+    "fields": {
+      "name": "Docker"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 10,
+    "fields": {
+      "name": "ElasticSearch"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 11,
+    "fields": {
+      "name": "ELK"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 12,
+    "fields": {
+      "name": "fastapi"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 13,
+    "fields": {
+      "name": "Flask"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 14,
+    "fields": {
+      "name": "Git"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 15,
+    "fields": {
+      "name": "Go"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 16,
+    "fields": {
+      "name": "Groovy"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 17,
+    "fields": {
+      "name": "HTML"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 18,
+    "fields": {
+      "name": "Java"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 19,
+    "fields": {
+      "name": "JavaScript"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 20,
+    "fields": {
+      "name": "Jenkins"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 21,
+    "fields": {
+      "name": "Kafka"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 22,
+    "fields": {
+      "name": "Kotlin"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 23,
+    "fields": {
+      "name": "Kubernetes"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 24,
+    "fields": {
+      "name": "Laravel"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 25,
+    "fields": {
+      "name": "NestJS"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 26,
+    "fields": {
+      "name": "Node.JS"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 27,
+    "fields": {
+      "name": "Perl"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 28,
+    "fields": {
+      "name": "PHP"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 29,
+    "fields": {
+      "name": "Python"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 30,
+    "fields": {
+      "name": "React"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 31,
+    "fields": {
+      "name": "Revel"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 32,
+    "fields": {
+      "name": "Ruby"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 33,
+    "fields": {
+      "name": "SQL"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 34,
+    "fields": {
+      "name": "Swift"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 35,
+    "fields": {
+      "name": "Terraform"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 36,
+    "fields": {
+      "name": "TypeScript"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 37,
+    "fields": {
+      "name": "Ubuntu"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 38,
+    "fields": {
+      "name": "Vue.js"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 39,
+    "fields": {
+      "name": "Yii framework"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 40,
+    "fields": {
+      "name": "Apache"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 41,
+    "fields": {
+      "name": "AWS"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 42,
+    "fields": {
+      "name": "Consul"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 43,
+    "fields": {
+      "name": "GitLab"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 44,
+    "fields": {
+      "name": "Grafana"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 45,
+    "fields": {
+      "name": "IaC"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 46,
+    "fields": {
+      "name": "Kibana (ELK)"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 47,
+    "fields": {
+      "name": "LAMP"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 48,
+    "fields": {
+      "name": "Linux"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 49,
+    "fields": {
+      "name": "Microsoft Azure"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 50,
+    "fields": {
+      "name": "MobX"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 51,
+    "fields": {
+      "name": "MongoDB"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 52,
+    "fields": {
+      "name": "New Relic"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 53,
+    "fields": {
+      "name": "Nginx"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 54,
+    "fields": {
+      "name": "Nomad"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 55,
+    "fields": {
+      "name": "Oracle"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 56,
+    "fields": {
+      "name": "PHP"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 57,
+    "fields": {
+      "name": "PostgreSQL"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 58,
+    "fields": {
+      "name": "Prometheus"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 59,
+    "fields": {
+      "name": "Redis"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 60,
+    "fields": {
+      "name": "SQL"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 61,
+    "fields": {
+      "name": "Terraform"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 62,
+    "fields": {
+      "name": "Terragrunt"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 63,
+    "fields": {
+      "name": "Ubuntu"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 64,
+    "fields": {
+      "name": "Vault"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 65,
+    "fields": {
+      "name": "Webix"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 66,
+    "fields": {
+      "name": "Websocket"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 67,
+    "fields": {
+      "name": "Windows"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 68,
+    "fields": {
+      "name": "Yandex.Cloud"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 69,
+    "fields": {
+      "name": "Zabbix"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 70,
+    "fields": {
+      "name": "3D Max"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 71,
+    "fields": {
+      "name": "3D studio"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 72,
+    "fields": {
+      "name": "Adobe After Effects"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 73,
+    "fields": {
+      "name": "Adobe Illustrator"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 74,
+    "fields": {
+      "name": "Adobe XD"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 75,
+    "fields": {
+      "name": "Arnold"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 76,
+    "fields": {
+      "name": "Axure"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 77,
+    "fields": {
+      "name": "Blender"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 78,
+    "fields": {
+      "name": "Cinema 4D"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 79,
+    "fields": {
+      "name": "ColorHexa"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 80,
+    "fields": {
+      "name": "Figma"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 81,
+    "fields": {
+      "name": "Houdini"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 82,
+    "fields": {
+      "name": "Lightroom classic"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 83,
+    "fields": {
+      "name": "Maya"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 84,
+    "fields": {
+      "name": "Photoshop"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 85,
+    "fields": {
+      "name": "Revit"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 86,
+    "fields": {
+      "name": "Sketch"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 87,
+    "fields": {
+      "name": "UI"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 88,
+    "fields": {
+      "name": "UX"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 89,
+    "fields": {
+      "name": "Bitrix24"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 90,
+    "fields": {
+      "name": "Excel"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 91,
+    "fields": {
+      "name": "Facebook Ads Manager"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 92,
+    "fields": {
+      "name": "Google AdWords"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 93,
+    "fields": {
+      "name": "Google Analytics"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 94,
+    "fields": {
+      "name": "MyTarget"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 95,
+    "fields": {
+      "name": "Power BI"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 96,
+    "fields": {
+      "name": "Power Query"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 97,
+    "fields": {
+      "name": "Scrum"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 98,
+    "fields": {
+      "name": "SEO"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 99,
+    "fields": {
+      "name": "SMM"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 100,
+    "fields": {
+      "name": "Trello"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 101,
+    "fields": {
+      "name": "МарТех"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 102,
+    "fields": {
+      "name": "Яндекс Метрика"
+    }
+  },
+  {
+    "model": "shared_info.skill",
+    "pk": 103,
+    "fields": {
+      "name": "Яндекс.Директ"
+    }
+  },
+  {
+    "model": "shared_info.educationlevel",
+    "pk": 1,
+    "fields": {
+      "name": "Intern"
+    }
+  },
+  {
+    "model": "shared_info.educationlevel",
+    "pk": 2,
+    "fields": {
+      "name": "Junior"
+    }
+  },
+  {
+    "model": "shared_info.educationlevel",
+    "pk": 3,
+    "fields": {
+      "name": "Middle"
+    }
+  },
+  {
+    "model": "shared_info.specialization",
+    "pk": 1,
+    "fields": {
+      "name": "Разработка"
+    }
+  },
+  {
+    "model": "shared_info.specialization",
+    "pk": 2,
+    "fields": {
+      "name": "Дизайн"
+    }
+  },
+  {
+    "model": "shared_info.specialization",
+    "pk": 3,
+    "fields": {
+      "name": "Маркетинг"
+    }
+  },
+  {
+    "model": "shared_info.schedule",
+    "pk": 1,
+    "fields": {
+      "name": "Полный рабочий день"
+    }
+  },
+  {
+    "model": "shared_info.schedule",
+    "pk": 2,
+    "fields": {
+      "name": "Гибкий график"
+    }
+  },
+  {
+    "model": "shared_info.schedule",
+    "pk": 3,
+    "fields": {
+      "name": "Удаленная работа"
+    }
+  },
+  {
+    "model": "shared_info.schedule",
+    "pk": 4,
+    "fields": {
+      "name": "Частичная занятость"
+    }
+  },
+  {
+    "model": "shared_info.schedule",
+    "pk": 5,
+    "fields": {
+      "name": "Гибрид"
+    }
+  },
+  {
+    "model": "shared_info.course",
+    "pk": 1,
+    "fields": {
+      "name": "Python-разработчик"
+    }
+  },
+  {
+    "model": "shared_info.course",
+    "pk": 2,
+    "fields": {
+      "name": "Фронтенд-разработчик"
+    }
+  },
+  {
+    "model": "shared_info.course",
+    "pk": 3,
+    "fields": {
+      "name": "Дизайнер интерфейсов"
+    }
+  },
+  {
+    "model": "shared_info.course",
+    "pk": 4,
+    "fields": {
+      "name": "Интернет-маркетолог"
+    }
+  },
+  {
+    "model": "shared_info.location",
+    "pk": 1,
+    "fields": {
+      "name": "Москва"
+    }
+  },
+  {
+    "model": "shared_info.location",
+    "pk": 2,
+    "fields": {
+      "name": "Санкт-Петербург"
+    }
+  },
+  {
+    "model": "shared_info.location",
+    "pk": 3,
+    "fields": {
+      "name": "Новосибирск"
+    }
+  },
+  {
+    "model": "shared_info.location",
+    "pk": 4,
+    "fields": {
+      "name": "Екатеринбург"
+    }
+  },
+  {
+    "model": "shared_info.location",
+    "pk": 5,
+    "fields": {
+      "name": "Казань"
+    }
+  },
+  {
+    "model": "shared_info.location",
+    "pk": 6,
+    "fields": {
+      "name": "Нижний Новгород"
+    }
+  },
+  {
+    "model": "shared_info.location",
+    "pk": 7,
+    "fields": {
+      "name": "Красноярск"
+    }
+  },
+  {
+    "model": "shared_info.location",
+    "pk": 8,
+    "fields": {
+      "name": "Челябинск"
+    }
+  },
+  {
+    "model": "shared_info.location",
+    "pk": 9,
+    "fields": {
+      "name": "Самара"
+    }
+  },
+  {
+    "model": "shared_info.location",
+    "pk": 10,
+    "fields": {
+      "name": "Уфа"
+    }
+  },
+  {
+    "model": "shared_info.location",
+    "pk": 11,
+    "fields": {
+      "name": "Ростов-на-Дону"
+    }
+  },
+  {
+    "model": "shared_info.location",
+    "pk": 12,
+    "fields": {
+      "name": "Краснодар"
+    }
+  },
+  {
+    "model": "shared_info.location",
+    "pk": 13,
+    "fields": {
+      "name": "Омск"
+    }
+  },
+  {
+    "model": "shared_info.location",
+    "pk": 14,
+    "fields": {
+      "name": "Воронеж"
+    }
+  },
+  {
+    "model": "shared_info.location",
+    "pk": 15,
+    "fields": {
+      "name": "Пермь"
+    }
+  },
+  {
+    "model": "shared_info.location",
+    "pk": 16,
+    "fields": {
+      "name": "Волгоград"
+    }
+  },
+  {
+    "model": "shared_info.location",
+    "pk": 17,
+    "fields": {
+      "name": "Саратов"
+    }
+  },
+  {
+    "model": "shared_info.location",
+    "pk": 18,
+    "fields": {
+      "name": "Тюмень"
+    }
+  },
+  {
+    "model": "shared_info.location",
+    "pk": 19,
+    "fields": {
+      "name": "Владивосток"
+    }
+  },
+  {
+    "model": "shared_info.location",
+    "pk": 20,
+    "fields": {
+      "name": "Тольятти"
+    }
+  },
+  {
+    "model": "shared_info.location",
+    "pk": 21,
+    "fields": {
+      "name": "Барнаул"
+    }
+  },
+  {
+    "model": "shared_info.location",
+    "pk": 22,
+    "fields": {
+      "name": "Махачкала"
+    }
+  },
+  {
+    "model": "shared_info.location",
+    "pk": 23,
+    "fields": {
+      "name": "Ижевск"
+    }
+  },
+  {
+    "model": "shared_info.location",
+    "pk": 24,
+    "fields": {
+      "name": "Хабаровск"
+    }
+  },
+  {
+    "model": "students.student",
+    "pk": 1,
+    "fields": {
+      "avatar": "",
+      "first_name": "Данил",
+      "last_name": "Невский",
+      "email": "anarant91@gmail.com",
+      "location": 1,
+      "sex": "M",
+      "age": 23,
+      "telegram": "http://t.me/dnevskiy",
+      "phone_number": "+7999999999",
+      "portfolio": "https://github.com/D-Nevskiy",
+      "experience": "Учебный опыт работы в разработке.",
+      "specialization": 1,
+      "course": 1,
+      "education_level": 2
+    }
+  },
+  {
+    "model": "students.student",
+    "pk": 2,
+    "fields": {
+      "avatar": "",
+      "first_name": "Иван",
+      "last_name": "Иванов",
+      "email": "ivan@example.com",
+      "location": 2,
+      "sex": "M",
+      "age": 22,
+      "telegram": "http://t.me/ivan_ivanov",
+      "phone_number": "+1234567890",
+      "portfolio": "https://portfolio.example.com/ivan",
+      "experience": "Учебный опыт работы в разработке.",
+      "specialization": 1,
+      "course": 1,
+      "education_level": 2
+    }
+  },
+  {
+    "model": "students.student",
+    "pk": 3,
+    "fields": {
+      "avatar": "",
+      "first_name": "Мария",
+      "last_name": "Сидорова",
+      "email": "maria@example.com",
+      "location": 3,
+      "sex": "F",
+      "age": 25,
+      "telegram": "http://t.me/maria_sidorova",
+      "phone_number": "+9876543210",
+      "portfolio": "https://portfolio.example.com/maria",
+      "experience": "Учебный опыт работы в разработке.",
+      "specialization": 1,
+      "course": 1,
+      "education_level": 2
+    }
+  },
+  {
+    "model": "students.student",
+    "pk": 4,
+    "fields": {
+      "avatar": "",
+      "first_name": "Анна",
+      "last_name": "Петрова",
+      "email": "anna@example.com",
+      "location": 4,
+      "sex": "F",
+      "age": 24,
+      "telegram": "http://t.me/anna_petrova",
+      "phone_number": "+5555555555",
+      "portfolio": "https://portfolio.example.com/anna",
+      "experience": "Учебный опыт работы в разработке.",
+      "specialization": 1,
+      "course": 1,
+      "education_level": 3
+    }
+  },
+  {
+    "model": "students.student",
+    "pk": 5,
+    "fields": {
+      "avatar": "",
+      "first_name": "Петр",
+      "last_name": "Семенов",
+      "email": "petr@example.com",
+      "location": 5,
+      "sex": "M",
+      "age": 26,
+      "telegram": "http://t.me/petr_semenov",
+      "phone_number": "+1111111111",
+      "portfolio": "https://portfolio.example.com/petr",
+      "experience": "Учебный опыт работы в разработке.",
+      "specialization": 1,
+      "course": 1,
+      "education_level": 3
+    }
+  },
+  {
+    "model": "students.student",
+    "pk": 6,
+    "fields": {
+      "avatar": "",
+      "first_name": "Елена",
+      "last_name": "Иванова",
+      "email": "elena@example.com",
+      "location": 6,
+      "sex": "F",
+      "age": 22,
+      "telegram": "http://t.me/elena_ivanova",
+      "phone_number": "+9999999999",
+      "portfolio": "https://portfolio.example.com/elena",
+      "experience": "Учебный опыт работы во фронтенд-разработке.",
+      "specialization": 1,
+      "course": 2,
+      "education_level": 1
+    }
+  },
+  {
+    "model": "students.student",
+    "pk": 7,
+    "fields": {
+      "avatar": "",
+      "first_name": "Сергей",
+      "last_name": "Смирнов",
+      "email": "sergey@example.com",
+      "location": 7,
+      "sex": "M",
+      "age": 28,
+      "telegram": "http://t.me/sergey_smirnov",
+      "phone_number": "+7777777777",
+      "portfolio": "https://portfolio.example.com/sergey",
+      "experience": "Учебный опыт работы во фронтенд-разработке.",
+      "specialization": 1,
+      "course": 2,
+      "education_level": 1
+    }
+  },
+  {
+    "model": "students.student",
+    "pk": 8,
+    "fields": {
+      "avatar": "",
+      "first_name": "Ольга",
+      "last_name": "Морозова",
+      "email": "olga@example.com",
+      "location": 8,
+      "sex": "F",
+      "age": 27,
+      "telegram": "http://t.me/olga_morozova",
+      "phone_number": "+8888888888",
+      "portfolio": "https://portfolio.example.com/olga",
+      "experience": "Учебный опыт работы во фронтенд-разработке.",
+      "specialization": 1,
+      "course": 2,
+      "education_level": 1
+    }
+  },
+  {
+    "model": "students.student",
+    "pk": 9,
+    "fields": {
+      "avatar": "",
+      "first_name": "Алексей",
+      "last_name": "Козлов",
+      "email": "alex@example.com",
+      "location": 1,
+      "sex": "M",
+      "age": 25,
+      "telegram": "http://t.me/alex_kozlov",
+      "phone_number": "+6666666666",
+      "portfolio": "https://portfolio.example.com/alex",
+      "experience": "Учебный опыт работы во фронтенд-разработке.",
+      "specialization": 1,
+      "course": 2,
+      "education_level": 2
+    }
+  },
+  {
+    "model": "students.student",
+    "pk": 10,
+    "fields": {
+      "avatar": "",
+      "first_name": "Наталья",
+      "last_name": "Павлова",
+      "email": "natalia@example.com",
+      "location": 1,
+      "sex": "F",
+      "age": 24,
+      "telegram": "http://t.me/natalia_pavlova",
+      "phone_number": "+5555555555",
+      "portfolio": "https://portfolio.example.com/natalia",
+      "experience": "Учебный опыт работы во фронтенд-разработке.",
+      "specialization": 1,
+      "course": 2,
+      "education_level": 2
+    }
+  },
+  {
+    "model": "students.student",
+    "pk": 11,
+    "fields": {
+      "avatar": "",
+      "first_name": "Андрей",
+      "last_name": "Сидоров",
+      "email": "AndreySidorov@example.com",
+      "location": 1,
+      "sex": "M",
+      "age": 23,
+      "telegram": "http://t.me/andrey_sidorov",
+      "phone_number": "+1111111111",
+      "portfolio": "https://github.com/andrey_sidorov",
+      "experience": "Учебный опыт работы в дизайне.",
+      "specialization": 2,
+      "course": 3,
+      "education_level": 1
+    }
+  },
+  {
+    "model": "students.student",
+    "pk": 12,
+    "fields": {
+      "avatar": "",
+      "first_name": "Наталья",
+      "last_name": "Иванова",
+      "email": "NatIvanova@example.com",
+      "location": 2,
+      "sex": "F",
+      "age": 22,
+      "telegram": "http://t.me/ekaterina_ivanova",
+      "phone_number": "+2222222222",
+      "portfolio": "https://github.com/ekaterina_ivanova",
+      "experience": "Учебный опыт работы в дизайне.",
+      "specialization": 2,
+      "course": 3,
+      "education_level": 1
+    }
+  },
+  {
+    "model": "students.student",
+    "pk": 13,
+    "fields": {
+      "avatar": "",
+      "first_name": "Максим",
+      "last_name": "Петров",
+      "email": "MaximPetrov@example.com",
+      "location": 3,
+      "sex": "M",
+      "age": 24,
+      "telegram": "http://t.me/maxim_petrov",
+      "phone_number": "+3333333333",
+      "portfolio": "https://github.com/maxim_petrov",
+      "experience": "Учебный опыт работы в дизайне.",
+      "specialization": 2,
+      "course": 3,
+      "education_level": 1
+    }
+  },
+  {
+    "model": "students.student",
+    "pk": 14,
+    "fields": {
+      "avatar": "",
+      "first_name": "Анна",
+      "last_name": "Семенова",
+      "email": "AnnaSemenova@example.com",
+      "location": 3,
+      "sex": "F",
+      "age": 25,
+      "telegram": "http://t.me/anna_semenova",
+      "phone_number": "+4444444444",
+      "portfolio": "https://github.com/anna_semenova",
+      "experience": "Учебный опыт работы в дизайне.",
+      "specialization": 2,
+      "course": 3,
+      "education_level": 3
+    }
+  },
+  {
+    "model": "students.student",
+    "pk": 15,
+    "fields": {
+      "avatar": "",
+      "first_name": "Сергей",
+      "last_name": "Сильный",
+      "email": "SergeyMor@example.com",
+      "location": 2,
+      "sex": "M",
+      "age": 23,
+      "telegram": "http://t.me/sergey_morozov",
+      "phone_number": "+5555555555",
+      "portfolio": "https://github.com/sergey_morozov",
+      "experience": "Учебный опыт работы в дизайне.",
+      "specialization": 2,
+      "course": 3,
+      "education_level": 3
+    }
+  },
+  {
+    "model": "students.student",
+    "pk": 16,
+    "fields": {
+      "avatar": "",
+      "first_name": "Елена",
+      "last_name": "Павлова",
+      "email": "ElenaPavlova@example.com",
+      "location": 1,
+      "sex": "F",
+      "age": 24,
+      "telegram": "http://t.me/elena_pavlova",
+      "phone_number": "+6666666666",
+      "portfolio": "https://github.com/elena_pavlova",
+      "experience": "Учебный опыт работы в дизайне.",
+      "specialization": 2,
+      "course": 3,
+      "education_level": 2
+    }
+  },
+  {
+    "model": "students.student",
+    "pk": 17,
+    "fields": {
+      "avatar": "",
+      "first_name": "Игорь",
+      "last_name": "Козлов",
+      "email": "IgorKozlov@example.com",
+      "location": 2,
+      "sex": "M",
+      "age": 25,
+      "telegram": "http://t.me/igor_kozlov",
+      "phone_number": "+7777777777",
+      "portfolio": "https://github.com/igor_kozlov",
+      "experience": "Учебный опыт работы в дизайне.",
+      "specialization": 2,
+      "course": 3,
+      "education_level": 3
+    }
+  },
+  {
+    "model": "students.student",
+    "pk": 18,
+    "fields": {
+      "avatar": "",
+      "first_name": "Ольга",
+      "last_name": "Смирнова",
+      "email": "OlgaSmirnova@example.com",
+      "location": 3,
+      "sex": "F",
+      "age": 26,
+      "telegram": "http://t.me/olga_smirnova",
+      "phone_number": "+8888888888",
+      "portfolio": "https://github.com/olga_smirnova",
+      "experience": "Учебный опыт работы в дизайне.",
+      "specialization": 2,
+      "course": 3,
+      "education_level": 2
+    }
+  },
+  {
+    "model": "students.student",
+    "pk": 19,
+    "fields": {
+      "avatar": "",
+      "first_name": "Алексей",
+      "last_name": "Иванов",
+      "email": "AlexIvanov@example.com",
+      "location": 1,
+      "sex": "M",
+      "age": 27,
+      "telegram": "http://t.me/alex_ivanov",
+      "phone_number": "+9999999999",
+      "portfolio": "https://github.com/alex_ivanov",
+      "experience": "Учебный опыт работы в дизайне.",
+      "specialization": 2,
+      "course": 3,
+      "education_level": 1
+    }
+  },
+  {
+    "model": "students.student",
+    "pk": 20,
+    "fields": {
+      "avatar": "",
+      "first_name": "Наталья",
+      "last_name": "Петрова",
+      "email": "NataliaPetrova@example.com",
+      "location": 2,
+      "sex": "F",
+      "age": 28,
+      "telegram": "http://t.me/natalia_petrova",
+      "phone_number": "+7777777777",
+      "portfolio": "https://github.com/natalia_petrova",
+      "experience": "Учебный опыт работы в дизайне.",
+      "specialization": 2,
+      "course": 3,
+      "education_level": 2
+    }
+  },
+  {
+    "model": "students.student",
+    "pk": 21,
+    "fields": {
+      "avatar": "",
+      "first_name": "Иван",
+      "last_name": "Иванов",
+      "email": "IvanIvanov@example.com",
+      "location": 3,
+      "sex": "M",
+      "age": 22,
+      "telegram": "http://t.me/ivan_ivanov",
+      "phone_number": "+1234567890",
+      "portfolio": "https://portfolio.example.com/ivan",
+      "experience": "Учебный опыт работы в интернет-маркетинге.",
+      "specialization": 3,
+      "course": 4,
+      "education_level": 1
+    }
+  },
+  {
+    "model": "students.student",
+    "pk": 22,
+    "fields": {
+      "avatar": "",
+      "first_name": "Мария",
+      "last_name": "Сидорова",
+      "email": "MariaSidorova@example.com",
+      "location": 1,
+      "sex": "F",
+      "age": 25,
+      "telegram": "http://t.me/maria_sidorova",
+      "phone_number": "+9876543210",
+      "portfolio": "https://portfolio.example.com/maria",
+      "experience": "Учебный опыт работы в интернет-маркетинге.",
+      "specialization": 3,
+      "course": 4,
+      "education_level": 2
+    }
+  },
+  {
+    "model": "students.student",
+    "pk": 23,
+    "fields": {
+      "avatar": "",
+      "first_name": "Алексей",
+      "last_name": "Петров",
+      "email": "AlexPetrov@example.com",
+      "location": 2,
+      "sex": "M",
+      "age": 24,
+      "telegram": "http://t.me/alex_petrov",
+      "phone_number": "+1357924680",
+      "portfolio": "https://portfolio.example.com/alex",
+      "experience": "Учебный опыт работы в интернет-маркетинге.",
+      "specialization": 3,
+      "course": 4,
+      "education_level": 3
+    }
+  },
+  {
+    "model": "students.student",
+    "pk": 24,
+    "fields": {
+      "avatar": "",
+      "first_name": "Екатерина",
+      "last_name": "Иванова",
+      "email": "EkaterinaIvanova@example.com",
+      "location": 3,
+      "sex": "F",
+      "age": 23,
+      "telegram": "http://t.me/ekaterina_ivanova",
+      "phone_number": "+1112233445",
+      "portfolio": "https://portfolio.example.com/ekaterina",
+      "experience": "Учебный опыт работы в интернет-маркетинге.",
+      "specialization": 3,
+      "course": 4,
+      "education_level": 3
+    }
+  },
+  {
+    "model": "students.student",
+    "pk": 25,
+    "fields": {
+      "avatar": "",
+      "first_name": "Максим",
+      "last_name": "Семенов",
+      "email": "MaxSemenov@example.com",
+      "location": 1,
+      "sex": "M",
+      "age": 22,
+      "telegram": "http://t.me/max_semenov",
+      "phone_number": "+9876543210",
+      "portfolio": "https://portfolio.example.com/maxim",
+      "experience": "Учебный опыт работы в интернет-маркетинге.",
+      "specialization": 3,
+      "course": 4,
+      "education_level": 3
+    }
+  },
+  {
+    "model": "students.student",
+    "pk": 26,
+    "fields": {
+      "avatar": "",
+      "first_name": "Анна",
+      "last_name": "Павлова",
+      "email": "AnnaPavlova@example.com",
+      "location": 3,
+      "sex": "F",
+      "age": 24,
+      "telegram": "http://t.me/anna_pavlova",
+      "phone_number": "+1234567890",
+      "portfolio": "https://portfolio.example.com/anna",
+      "experience": "Учебный опыт работы в интернет-маркетинге.",
+      "specialization": 3,
+      "course": 4,
+      "education_level": 2
+    }
+  },
+  {
+    "model": "students.student",
+    "pk": 27,
+    "fields": {
+      "avatar": "",
+      "first_name": "Сергей",
+      "last_name": "Морозов",
+      "email": "SergeyMorozov@example.com",
+      "location": 19,
+      "sex": "M",
+      "age": 25,
+      "telegram": "http://t.me/sergey_morozov",
+      "phone_number": "+1112233445",
+      "portfolio": "https://portfolio.example.com/sergey",
+      "experience": "Учебный опыт работы в интернет-маркетинге.",
+      "specialization": 3,
+      "course": 4,
+      "education_level": 1
+    }
+  },
+  {
+    "model": "students.student",
+    "pk": 28,
+    "fields": {
+      "avatar": "",
+      "first_name": "Елена",
+      "last_name": "Козлова",
+      "email": "ElenaKozlova@example.com",
+      "location": 15,
+      "sex": "F",
+      "age": 23,
+      "telegram": "http://t.me/elena_kozlova",
+      "phone_number": "+9876543210",
+      "portfolio": "https://portfolio.example.com/elena",
+      "experience": "Учебный опыт работы в интернет-маркетинге.",
+      "specialization": 3,
+      "course": 4,
+      "education_level": 2
+    }
+  },
+  {
+    "model": "students.student",
+    "pk": 29,
+    "fields": {
+      "avatar": "",
+      "first_name": "Игорь",
+      "last_name": "Смирнов",
+      "email": "IgorSmirnov@example.com",
+      "location": 16,
+      "sex": "M",
+      "age": 24,
+      "telegram": "http://t.me/igor_smirnov",
+      "phone_number": "+1234567890",
+      "portfolio": "https://portfolio.example.com/igor",
+      "experience": "Учебный опыт работы в интернет-маркетинге.",
+      "specialization": 3,
+      "course": 4,
+      "education_level": 2
+    }
+  },
+  {
+    "model": "students.student",
+    "pk": 30,
+    "fields": {
+      "avatar": "",
+      "first_name": "Ольга",
+      "last_name": "Иванова",
+      "email": "OlgaIvanova@example.com",
+      "location": 17,
+      "sex": "F",
+      "age": 25,
+      "telegram": "http://t.me/olga_ivanova",
+      "phone_number": "+1112233445",
+      "portfolio": "https://portfolio.example.com/olga",
+      "experience": "Учебный опыт работы в интернет-маркетинге.",
+      "specialization": 3,
+      "course": 4,
+      "education_level": 2
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 1,
+    "fields": {
+      "student": 1,
+      "skill": 9
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 2,
+    "fields": {
+      "student": 1,
+      "skill": 48
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 3,
+    "fields": {
+      "student": 2,
+      "skill": 12
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 4,
+    "fields": {
+      "student": 3,
+      "skill": 29
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 5,
+    "fields": {
+      "student": 1,
+      "skill": 33
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 6,
+    "fields": {
+      "student": 1,
+      "skill": 29
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 7,
+    "fields": {
+      "student": 1,
+      "skill": 8
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 8,
+    "fields": {
+      "student": 2,
+      "skill": 8
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 9,
+    "fields": {
+      "student": 2,
+      "skill": 15
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 10,
+    "fields": {
+      "student": 2,
+      "skill": 29
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 11,
+    "fields": {
+      "student": 2,
+      "skill": 59
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 12,
+    "fields": {
+      "student": 3,
+      "skill": 9
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 13,
+    "fields": {
+      "student": 3,
+      "skill": 12
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 14,
+    "fields": {
+      "student": 3,
+      "skill": 32
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 15,
+    "fields": {
+      "student": 3,
+      "skill": 37
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 16,
+    "fields": {
+      "student": 6,
+      "skill": 17
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 17,
+    "fields": {
+      "student": 6,
+      "skill": 7
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 18,
+    "fields": {
+      "student": 6,
+      "skill": 14
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 19,
+    "fields": {
+      "student": 6,
+      "skill": 30
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 20,
+    "fields": {
+      "student": 6,
+      "skill": 36
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 21,
+    "fields": {
+      "student": 10,
+      "skill": 17
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 22,
+    "fields": {
+      "student": 10,
+      "skill": 9
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 23,
+    "fields": {
+      "student": 10,
+      "skill": 7
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 24,
+    "fields": {
+      "student": 10,
+      "skill": 14
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 25,
+    "fields": {
+      "student": 10,
+      "skill": 30
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 26,
+    "fields": {
+      "student": 10,
+      "skill": 36
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 27,
+    "fields": {
+      "student": 11,
+      "skill": 80
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 28,
+    "fields": {
+      "student": 11,
+      "skill": 84
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 29,
+    "fields": {
+      "student": 11,
+      "skill": 78
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 30,
+    "fields": {
+      "student": 12,
+      "skill": 88
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 31,
+    "fields": {
+      "student": 12,
+      "skill": 84
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 32,
+    "fields": {
+      "student": 12,
+      "skill": 78
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 33,
+    "fields": {
+      "student": 12,
+      "skill": 80
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 34,
+    "fields": {
+      "student": 30,
+      "skill": 103
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 35,
+    "fields": {
+      "student": 29,
+      "skill": 102
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 36,
+    "fields": {
+      "student": 30,
+      "skill": 102
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 37,
+    "fields": {
+      "student": 30,
+      "skill": 93
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 38,
+    "fields": {
+      "student": 30,
+      "skill": 90
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 39,
+    "fields": {
+      "student": 30,
+      "skill": 91
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 40,
+    "fields": {
+      "student": 29,
+      "skill": 103
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 41,
+    "fields": {
+      "student": 29,
+      "skill": 97
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 42,
+    "fields": {
+      "student": 29,
+      "skill": 101
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 43,
+    "fields": {
+      "student": 29,
+      "skill": 93
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 44,
+    "fields": {
+      "student": 29,
+      "skill": 92
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 45,
+    "fields": {
+      "student": 29,
+      "skill": 90
+    }
+  },
+  {
+    "model": "students.studentskills",
+    "pk": 46,
+    "fields": {
+      "student": 29,
+      "skill": 89
+    }
+  },
+  {
+    "model": "students.studentschedule",
+    "pk": 1,
+    "fields": {
+      "student": 1,
+      "schedule": 1
+    }
+  },
+  {
+    "model": "students.studentschedule",
+    "pk": 2,
+    "fields": {
+      "student": 1,
+      "schedule": 3
+    }
+  },
+  {
+    "model": "students.studentschedule",
+    "pk": 3,
+    "fields": {
+      "student": 2,
+      "schedule": 3
+    }
+  },
+  {
+    "model": "students.studentschedule",
+    "pk": 4,
+    "fields": {
+      "student": 3,
+      "schedule": 2
+    }
+  },
+  {
+    "model": "students.studentschedule",
+    "pk": 5,
+    "fields": {
+      "student": 3,
+      "schedule": 1
+    }
+  },
+  {
+    "model": "students.studentschedule",
+    "pk": 6,
+    "fields": {
+      "student": 5,
+      "schedule": 4
+    }
+  },
+  {
+    "model": "students.studentschedule",
+    "pk": 7,
+    "fields": {
+      "student": 6,
+      "schedule": 1
+    }
+  },
+  {
+    "model": "students.studentschedule",
+    "pk": 8,
+    "fields": {
+      "student": 7,
+      "schedule": 3
+    }
+  },
+  {
+    "model": "students.studentschedule",
+    "pk": 9,
+    "fields": {
+      "student": 7,
+      "schedule": 1
+    }
+  },
+  {
+    "model": "students.studentschedule",
+    "pk": 10,
+    "fields": {
+      "student": 8,
+      "schedule": 5
+    }
+  },
+  {
+    "model": "students.studentschedule",
+    "pk": 11,
+    "fields": {
+      "student": 9,
+      "schedule": 1
+    }
+  },
+  {
+    "model": "students.studentschedule",
+    "pk": 12,
+    "fields": {
+      "student": 10,
+      "schedule": 3
+    }
+  },
+  {
+    "model": "students.studentschedule",
+    "pk": 13,
+    "fields": {
+      "student": 10,
+      "schedule": 5
+    }
+  },
+  {
+    "model": "students.studentschedule",
+    "pk": 14,
+    "fields": {
+      "student": 11,
+      "schedule": 1
+    }
+  },
+  {
+    "model": "students.studentschedule",
+    "pk": 15,
+    "fields": {
+      "student": 15,
+      "schedule": 5
+    }
+  },
+  {
+    "model": "students.studentschedule",
+    "pk": 16,
+    "fields": {
+      "student": 16,
+      "schedule": 1
+    }
+  },
+  {
+    "model": "students.studentschedule",
+    "pk": 17,
+    "fields": {
+      "student": 17,
+      "schedule": 1
+    }
+  },
+  {
+    "model": "students.studentschedule",
+    "pk": 18,
+    "fields": {
+      "student": 18,
+      "schedule": 5
+    }
+  },
+  {
+    "model": "students.studentschedule",
+    "pk": 19,
+    "fields": {
+      "student": 18,
+      "schedule": 3
+    }
+  },
+  {
+    "model": "students.studentschedule",
+    "pk": 20,
+    "fields": {
+      "student": 19,
+      "schedule": 4
+    }
+  },
+  {
+    "model": "students.studentschedule",
+    "pk": 21,
+    "fields": {
+      "student": 20,
+      "schedule": 2
+    }
+  },
+  {
+    "model": "students.studentschedule",
+    "pk": 22,
+    "fields": {
+      "student": 21,
+      "schedule": 1
+    }
+  },
+  {
+    "model": "students.studentschedule",
+    "pk": 23,
+    "fields": {
+      "student": 22,
+      "schedule": 1
+    }
+  },
+  {
+    "model": "students.studentschedule",
+    "pk": 24,
+    "fields": {
+      "student": 23,
+      "schedule": 5
+    }
+  },
+  {
+    "model": "students.studentschedule",
+    "pk": 25,
+    "fields": {
+      "student": 24,
+      "schedule": 1
+    }
+  },
+  {
+    "model": "students.studentschedule",
+    "pk": 26,
+    "fields": {
+      "student": 25,
+      "schedule": 5
+    }
+  },
+  {
+    "model": "students.studentschedule",
+    "pk": 27,
+    "fields": {
+      "student": 25,
+      "schedule": 3
+    }
+  },
+  {
+    "model": "students.studentschedule",
+    "pk": 28,
+    "fields": {
+      "student": 26,
+      "schedule": 5
+    }
+  },
+  {
+    "model": "students.studentschedule",
+    "pk": 29,
+    "fields": {
+      "student": 26,
+      "schedule": 1
+    }
+  },
+  {
+    "model": "students.studentschedule",
+    "pk": 30,
+    "fields": {
+      "student": 27,
+      "schedule": 3
+    }
+  },
+  {
+    "model": "students.studentschedule",
+    "pk": 31,
+    "fields": {
+      "student": 28,
+      "schedule": 1
+    }
+  },
+  {
+    "model": "students.studentschedule",
+    "pk": 32,
+    "fields": {
+      "student": 28,
+      "schedule": 2
+    }
+  },
+  {
+    "model": "students.studentschedule",
+    "pk": 33,
+    "fields": {
+      "student": 29,
+      "schedule": 5
+    }
+  },
+  {
+    "model": "students.studentschedule",
+    "pk": 34,
+    "fields": {
+      "student": 30,
+      "schedule": 1
+    }
+  }
+]

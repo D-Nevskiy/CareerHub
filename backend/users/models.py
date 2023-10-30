@@ -129,12 +129,13 @@ class User(AbstractUser):
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
-    object = UserManager()
+    objects = UserManager()
 
     avatar = models.ImageField(
         'Изображение профиля',
         upload_to='avatars/',
-        blank=True
+        blank=True,
+        help_text='Загрузите картинку'
     )
     first_name = models.CharField(
         'Имя',
@@ -147,13 +148,14 @@ class User(AbstractUser):
     email = models.EmailField(
         'Электронная почта',
         max_length=EMAIL_LENGTH,
-        unique=True
+        unique=True,
     )
     telegram = models.URLField(
         'Ссылка на Telegram',
         max_length=TELEGRAM_LENGTH,
         null=False,
-        blank=True
+        blank=True,
+        help_text='Введите ссылку на Telegram'
     )
     phone_number = models.CharField(
         max_length=PHONE_NUMBER_LENGTH,
@@ -165,7 +167,8 @@ class User(AbstractUser):
     company = models.CharField(
         'Компания',
         max_length=COMPANY_NAME_LENGTH,
-        blank=True
+        blank=True,
+        help_text='Введите название вашей компании'
     )
     role = models.CharField(
         'Роль',
@@ -176,6 +179,7 @@ class User(AbstractUser):
     )
     is_active = models.BooleanField(default=False)
     username = None
+
 
     @property
     def is_admin(self):

@@ -43,7 +43,7 @@ class CustomUserViewSet(UserViewSet):
         """
         if self.action == 'list':
             return (IsAdminUser(),)
-        return self.permission_classes
+        return (AllowAny,)
 
     @action(
         methods=['get'], detail=False,
@@ -64,7 +64,6 @@ class CustomUserViewSet(UserViewSet):
         :param format: Формат ответа (по умолчанию None).
         :return: Ответ, указывающий на успешную активацию или ошибку.
         """
-        print(request)
         payload = {'uid': uid, 'token': token}
 
         url = "http://localhost:8000/api/users/activation/"

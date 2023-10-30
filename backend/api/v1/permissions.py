@@ -86,4 +86,6 @@ class IsAdminUser(BasePermission):
                "только администраторам.")
 
     def has_permission(self, request, view):
+        if request.user.is_anonymous:
+            return False
         return request.user.is_admin

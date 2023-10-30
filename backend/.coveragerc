@@ -1,0 +1,7 @@
+[run]
+source=users/,api/v1/,
+omit=
+    venv
+    *migrations*
+    *tests*
+    */__init__.py

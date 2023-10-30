@@ -1,29 +1,58 @@
-from rest_framework.test import APITestCase
-from rest_framework import status
+from django.test import TestCase
 from users.models import User
+from django.core.exceptions import ValidationError
 
 
-class VacancyViewSetTest(APITestCase):
-    def setUp(self):
-        self.email = 'anarant91@gmail.com'
-        self.first_name = 'Danya'
-        self.last_name = 'Nevskiy'
-        self.telegram = 't.me/dnevskiy'
-        self.phone_number = '899999999'
-        self.company = 'Ozon'
+class UserModelTest(TestCase):
 
-    def test_user_creation_without_email(self):
-        with self.assertRaises(ValueError):
-            User.objects.create_user(email='', first_name=self.first_name, last_name=self.last_name)
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.user = User.objects.create(
+            email='testemail.yandex.ru',
+            first_name='Danya',
+            last_name='Nevskiy',
+            password='123456'
+        )
 
-    def test_create_users(self):
-        user = User.objects.create_user(email='anarant91@gmail.com', first_name='Danya', last_name='Nevskiy',
-                                        password='123456', telegram='t.me/dnevskiy', phone_number='899999999',
-                                        company='Ozon')
-        self.assertIsInstance(user, User)
-        self.assertEqual(user.email, self.email)
-        self.assertEqual(user.first_name, self.first_name)
-        self.assertEqual(user.last_name, self.last_name)
-        self.assertEqual(user.telegram, self.telegram)
-        self.assertEqual(user.phone_number, self.phone_number)
-        self.assertEqual(user.company, self.company)
+    def test_verbose_name(self):
+        """verbose_name в полях совпадает с ожидаемым."""
+        user = UserModelTest.user
+        field_verboses = {
+            'avatar': 'Изображение профиля',
+            'first_name': 'Имя',
+            'last_name': 'Фамилия',
+            'email': 'Электронная почта',
+            'telegram': 'Ссылка на Telegram',
+            'phone_number': 'Номер телефона',
+            'company': 'Компания',
+            'role': 'Роль'
+        }
+        for field, expected_value in field_verboses.items():
+            with self.subTest(field=field):
+                self.assertEqual(
+                    user._meta.get_field(field).verbose_name, expected_value)
+
+    def test_help_text(self):
+        """help_text в полях совпадает с ожидаемым."""
+        user = UserModelTest.user
+        field_help_texts = {
+            'phone_number': 'Введите номер телефона',
+            'telegram': 'Введите ссылку на Telegram',
+            'company': 'Введите название вашей компании',
+            'avatar': 'Загрузите картинку',
+        }
+        for field, expected_value in field_help_texts.items():
+            with self.subTest(field=field):
+                self.assertEqual(
+                    user._meta.get_field(field).help_text, expected_value)
+
+    def test_invalid_phone_number(self):
+        """Проверка валидации номера телефона."""
+        user = UserModelTest.user
+        invalid_phone_numbers = ['12345', '12345678901234567890', 'abc12345']
+        for phone_number in invalid_phone_numbers:
+            with self.subTest(phone_number=phone_number):
+                user.phone_number = phone_number
+                with self.assertRaises(ValidationError):
+                    user.full_clean()
