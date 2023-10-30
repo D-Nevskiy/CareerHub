@@ -1,11 +1,18 @@
-import requests
+from typing import Tuple, Any
+
+from django.contrib.auth.tokens import default_token_generator
+from django.urls import reverse_lazy
+from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_encode
 from djoser.views import UserViewSet
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
+from rest_framework.status import HTTP_400_BAD_REQUEST, HTTP_204_NO_CONTENT
 
 from api.v1.permissions import IsAdminUser
+from core.celery.celery_app import send_activation_email, activate_user
 from core.pagination import CustomPagination
 from users.models import User
 from users.serializers import CustomUserSerializer
@@ -34,16 +41,36 @@ class CustomUserViewSet(UserViewSet):
 
     queryset = User.objects.all()
     serializer_class = CustomUserSerializer
-    permission_classes = [AllowAny]
     pagination_class = CustomPagination
 
-    def get_permissions(self):
+    def get_permissions(self) -> Tuple:
         """
         Возвращает соответствующий сериализатор в зависимости от действия.
         """
         if self.action == 'list':
             return (IsAdminUser(),)
-        return (AllowAny,)
+        return (AllowAny(),)
+
+    def perform_create(self, serializer) -> Any:
+        """
+        Создает пользователя и отправляет ему письмо со ссылкой
+        на активацию аккаунта.
+
+        :param serializer: Сериализатор, используемый для
+        создания пользователя.
+        :return: Созданный пользователь.
+        """
+        user = serializer.save()
+        # Используем стандартный генератор токенов.
+        token = default_token_generator.make_token(user)
+        uid = urlsafe_base64_encode(force_bytes(user.pk))
+        activation_link = reverse_lazy('activate',
+                                       kwargs={'uid': uid, 'token': token})
+        recipient_list = [user.email]
+        # Отправляем письмо с помощью celery.
+        send_activation_email.delay(activation_link, recipient_list)
+
+        return user
 
     @action(
         methods=['get'], detail=False,
@@ -54,7 +81,7 @@ class CustomUserViewSet(UserViewSet):
         responses={204: "Успешная активация пользователя",
                    400: "Ошибка активации"},
     )
-    def activate(self, request, uid, token, format=None):
+    def activate(self, request, uid, token, format=None) -> Response:
         """
         Активирует пользователя с заданным UID и токеном.
 
@@ -64,12 +91,9 @@ class CustomUserViewSet(UserViewSet):
         :param format: Формат ответа (по умолчанию None).
         :return: Ответ, указывающий на успешную активацию или ошибку.
         """
-        payload = {'uid': uid, 'token': token}
-
-        url = "http://localhost:8000/api/users/activation/"
-        response = requests.post(url, data=payload)
-
-        if response.status_code == 204:
-            return Response({}, response.status_code)
-        else:
-            return Response(response.json())
+        try:
+            # Отправляем запрос на активацию аккаунта с помощью celery.
+            activate_user.delay(uid, token)
+        except Exception as error:
+            return Response(error, status=HTTP_400_BAD_REQUEST)
+        return Response(status=HTTP_204_NO_CONTENT)

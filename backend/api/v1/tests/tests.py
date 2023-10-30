@@ -42,15 +42,19 @@ class StudentViewSetTestCase(TestCase):
         self.assertEqual(response2.status_code, 200)
         favorite_students = response2.data
         self.assertTrue(
-            any(student['id'] == self.student.id for student in favorite_students)
+            any(student['id'] == self.student.id
+                for student in favorite_students)
         )
 
-        response3 = self.authorized_client.delete(f'/api/favorite/{self.student.id}/')
+        response3 = self.authorized_client.delete(
+            f'/api/favorite/{self.student.id}/'
+        )
         self.assertEqual(response3.status_code, 204)
 
         response4 = self.authorized_client.get('/api/favorite/')
         self.assertEqual(response4.status_code, 200)
         favorite_students_after_deletion = response4.data
         self.assertFalse(
-            any(student['id'] == self.student.id for student in favorite_students_after_deletion)
+            any(student['id'] == self.student.id
+                for student in favorite_students_after_deletion)
         )

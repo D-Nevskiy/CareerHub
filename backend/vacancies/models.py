@@ -1,8 +1,8 @@
 from django.db import models
 
 from core.constants.vacancies import (VACANCY_NAME_LENGTH, VACANCY_TEXT_LENGTH)
-from shared_info.models import Schedule, Skill, EducationLevel, Specialization, \
-    Location
+from shared_info.models import (Schedule, Skill, EducationLevel,
+                                Specialization, Location)
 from users.models import User
 
 

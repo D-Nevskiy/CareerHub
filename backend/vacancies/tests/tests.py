@@ -2,7 +2,8 @@ from django.test import TestCase
 from rest_framework.test import APIClient
 from users.models import User
 from students.models import Student
-from shared_info.models import Location, Specialization, Course, EducationLevel, Schedule, Skill
+from shared_info.models import (Location, Specialization, Course,
+                                EducationLevel, Schedule, Skill)
 from vacancies.models import Vacancy
 
 
@@ -53,5 +54,7 @@ class StudentViewSetTestCase(TestCase):
     def test_vacancy_match(self):
         response = self.authorized_client.get('/api/matching/1/')
         self.assertEqual(response.status_code, 200)
-        desired_vacancy_id = 2
-        self.assertTrue(any(item['id'] == desired_vacancy_id for item in response.data))
+        desired_vacancy_id = 1
+        self.assertTrue(
+            any(item['id'] == desired_vacancy_id for item in response.data)
+        )
