@@ -61,6 +61,8 @@ class UserModelTest(TestCase):
 
 
 class CustomUserSerializerTest(TestCase):
+    """Проверка сериализатора User"""
+
     def test_create_user(self):
         data = {
             'email': 'test@example.com',
