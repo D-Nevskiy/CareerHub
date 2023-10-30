@@ -1,0 +1,512 @@
+[
+    {
+        "model": "students.student",
+        "pk": 1,
+        "fields": {
+            "avatar": "",
+            "first_name": "Данил",
+            "last_name": "Невский",
+            "email": "anarant91@gmail.com",
+            "sex": "M",
+            "age": 23,
+            "telegram": "http://t.me/dnevskiy",
+            "phone_number": "+7999999999",
+            "portfolio": "https://github.com/D-Nevskiy",
+            "experience": "Учебный опыт работы в разработке.",
+            "course": 1
+        }
+    },
+    {
+        "model": "students.student",
+        "pk": 2,
+        "fields": {
+            "avatar": "",
+            "first_name": "Иван",
+            "last_name": "Иванов",
+            "email": "ivan@example.com",
+            "sex": "M",
+            "age": 22,
+            "telegram": "http://t.me/ivan_ivanov",
+            "phone_number": "+1234567890",
+            "portfolio": "https://portfolio.example.com/ivan",
+            "experience": "Учебный опыт работы в разработке.",
+            "course": 1
+        }
+    },
+    {
+        "model": "students.student",
+        "pk": 3,
+        "fields": {
+            "avatar": "",
+            "first_name": "Мария",
+            "last_name": "Сидорова",
+            "email": "maria@example.com",
+            "sex": "F",
+            "age": 25,
+            "telegram": "http://t.me/maria_sidorova",
+            "phone_number": "+9876543210",
+            "portfolio": "https://portfolio.example.com/maria",
+            "experience": "Учебный опыт работы в разработке.",
+            "course": 1
+        }
+    },
+    {
+        "model": "students.student",
+        "pk": 4,
+        "fields": {
+            "avatar": "",
+            "first_name": "Анна",
+            "last_name": "Петрова",
+            "email": "anna@example.com",
+            "sex": "F",
+            "age": 24,
+            "telegram": "http://t.me/anna_petrova",
+            "phone_number": "+5555555555",
+            "portfolio": "https://portfolio.example.com/anna",
+            "experience": "Учебный опыт работы в разработке.",
+            "course": 1
+        }
+    },
+    {
+        "model": "students.student",
+        "pk": 5,
+        "fields": {
+            "avatar": "",
+            "first_name": "Петр",
+            "last_name": "Семенов",
+            "email": "petr@example.com",
+            "sex": "M",
+            "age": 26,
+            "telegram": "http://t.me/petr_semenov",
+            "phone_number": "+1111111111",
+            "portfolio": "https://portfolio.example.com/petr",
+            "experience": "Учебный опыт работы в разработке.",
+            "course": 1
+        }
+    },
+    {
+        "model": "students.student",
+        "pk": 6,
+        "fields": {
+            "avatar": "",
+            "first_name": "Елена",
+            "last_name": "Иванова",
+            "email": "elena@example.com",
+            "sex": "F",
+            "age": 22,
+            "telegram": "http://t.me/elena_ivanova",
+            "phone_number": "+9999999999",
+            "portfolio": "https://portfolio.example.com/elena",
+            "experience": "Учебный опыт работы во фронтенд-разработке.",
+            "course": 2
+        }
+    },
+    {
+        "model": "students.student",
+        "pk": 7,
+        "fields": {
+            "avatar": "",
+            "first_name": "Сергей",
+            "last_name": "Смирнов",
+            "email": "sergey@example.com",
+            "sex": "M",
+            "age": 28,
+            "telegram": "http://t.me/sergey_smirnov",
+            "phone_number": "+7777777777",
+            "portfolio": "https://portfolio.example.com/sergey",
+            "experience": "Учебный опыт работы во фронтенд-разработке.",
+            "course": 2
+        }
+    },
+    {
+        "model": "students.student",
+        "pk": 8,
+        "fields": {
+            "avatar": "",
+            "first_name": "Ольга",
+            "last_name": "Морозова",
+            "email": "olga@example.com",
+            "sex": "F",
+            "age": 27,
+            "telegram": "http://t.me/olga_morozova",
+            "phone_number": "+8888888888",
+            "portfolio": "https://portfolio.example.com/olga",
+            "experience": "Учебный опыт работы во фронтенд-разработке.",
+            "course": 2
+        }
+    },
+    {
+        "model": "students.student",
+        "pk": 9,
+        "fields": {
+            "avatar": "",
+            "first_name": "Алексей",
+            "last_name": "Козлов",
+            "email": "alex@example.com",
+            "sex": "M",
+            "age": 25,
+            "telegram": "http://t.me/alex_kozlov",
+            "phone_number": "+6666666666",
+            "portfolio": "https://portfolio.example.com/alex",
+            "experience": "Учебный опыт работы во фронтенд-разработке.",
+            "course": 2
+        }
+    },
+    {
+        "model": "students.student",
+        "pk": 10,
+        "fields": {
+            "avatar": "",
+            "first_name": "Наталья",
+            "last_name": "Павлова",
+            "email": "natalia@example.com",
+            "sex": "F",
+            "age": 24,
+            "telegram": "http://t.me/natalia_pavlova",
+            "phone_number": "+5555555555",
+            "portfolio": "https://portfolio.example.com/natalia",
+            "experience": "Учебный опыт работы во фронтенд-разработке.",
+            "course": 2
+        }
+    },
+        {
+        "model": "students.student",
+        "pk": 11,
+        "fields": {
+            "avatar": "",
+            "first_name": "Андрей",
+            "last_name": "Сидоров",
+            "email": "AndreySidorov@example.com",
+            "sex": "M",
+            "age": 23,
+            "telegram": "http://t.me/andrey_sidorov",
+            "phone_number": "+1111111111",
+            "portfolio": "https://github.com/andrey_sidorov",
+            "experience": "Учебный опыт работы в дизайне.",
+            "course": 3
+        }
+    },
+    {
+        "model": "students.student",
+        "pk": 12,
+        "fields": {
+            "avatar": "",
+            "first_name": "Наталья",
+            "last_name": "Иванова",
+            "email": "NatIvanova@example.com",
+            "sex": "F",
+            "age": 22,
+            "telegram": "http://t.me/ekaterina_ivanova",
+            "phone_number": "+2222222222",
+            "portfolio": "https://github.com/ekaterina_ivanova",
+            "experience": "Учебный опыт работы в дизайне.",
+            "course": 3
+        }
+    },
+    {
+        "model": "students.student",
+        "pk": 13,
+        "fields": {
+            "avatar": "",
+            "first_name": "Максим",
+            "last_name": "Петров",
+            "email": "MaximPetrov@example.com",
+            "sex": "M",
+            "age": 24,
+            "telegram": "http://t.me/maxim_petrov",
+            "phone_number": "+3333333333",
+            "portfolio": "https://github.com/maxim_petrov",
+            "experience": "Учебный опыт работы в дизайне.",
+            "course": 3
+        }
+    },
+    {
+        "model": "students.student",
+        "pk": 14,
+        "fields": {
+            "avatar": "",
+            "first_name": "Анна",
+            "last_name": "Семенова",
+            "email": "AnnaSemenova@example.com",
+            "sex": "F",
+            "age": 25,
+            "telegram": "http://t.me/anna_semenova",
+            "phone_number": "+4444444444",
+            "portfolio": "https://github.com/anna_semenova",
+            "experience": "Учебный опыт работы в дизайне.",
+            "course": 3
+        }
+    },
+    {
+        "model": "students.student",
+        "pk": 15,
+        "fields": {
+            "avatar": "",
+            "first_name": "Сергей",
+            "last_name": "Сильный",
+            "email": "SergeyMor@example.com",
+            "sex": "M",
+            "age": 23,
+            "telegram": "http://t.me/sergey_morozov",
+            "phone_number": "+5555555555",
+            "portfolio": "https://github.com/sergey_morozov",
+            "experience": "Учебный опыт работы в дизайне.",
+            "course": 3
+        }
+    },
+    {
+        "model": "students.student",
+        "pk": 16,
+        "fields": {
+            "avatar": "",
+            "first_name": "Елена",
+            "last_name": "Павлова",
+            "email": "ElenaPavlova@example.com",
+            "sex": "F",
+            "age": 24,
+            "telegram": "http://t.me/elena_pavlova",
+            "phone_number": "+6666666666",
+            "portfolio": "https://github.com/elena_pavlova",
+            "experience": "Учебный опыт работы в дизайне.",
+            "course": 3
+        }
+    },
+    {
+        "model": "students.student",
+        "pk": 17,
+        "fields": {
+            "avatar": "",
+            "first_name": "Игорь",
+            "last_name": "Козлов",
+            "email": "IgorKozlov@example.com",
+            "sex": "M",
+            "age": 25,
+            "telegram": "http://t.me/igor_kozlov",
+            "phone_number": "+7777777777",
+            "portfolio": "https://github.com/igor_kozlov",
+            "experience": "Учебный опыт работы в дизайне.",
+            "course": 3
+        }
+    },
+    {
+        "model": "students.student",
+        "pk": 18,
+        "fields": {
+            "avatar": "",
+            "first_name": "Ольга",
+            "last_name": "Смирнова",
+            "email": "OlgaSmirnova@example.com",
+            "sex": "F",
+            "age": 26,
+            "telegram": "http://t.me/olga_smirnova",
+            "phone_number": "+8888888888",
+            "portfolio": "https://github.com/olga_smirnova",
+            "experience": "Учебный опыт работы в дизайне.",
+            "course": 3
+        }
+    },
+    {
+        "model": "students.student",
+        "pk": 19,
+        "fields": {
+            "avatar": "",
+            "first_name": "Алексей",
+            "last_name": "Иванов",
+            "email": "AlexIvanov@example.com",
+            "sex": "M",
+            "age": 27,
+            "telegram": "http://t.me/alex_ivanov",
+            "phone_number": "+9999999999",
+            "portfolio": "https://github.com/alex_ivanov",
+            "experience": "Учебный опыт работы в дизайне.",
+            "course": 3
+        }
+    },
+    {
+        "model": "students.student",
+        "pk": 20,
+        "fields": {
+            "avatar": "",
+            "first_name": "Наталья",
+            "last_name": "Петрова",
+            "email": "NataliaPetrova@example.com",
+            "sex": "F",
+            "age": 28,
+            "telegram": "http://t.me/natalia_petrova",
+            "phone_number": "+7777777777",
+            "portfolio": "https://github.com/natalia_petrova",
+            "experience": "Учебный опыт работы в дизайне.",
+            "course": 3
+        }
+    },
+        {
+        "model": "students.student",
+        "pk": 21,
+        "fields": {
+            "avatar": "",
+            "first_name": "Иван",
+            "last_name": "Иванов",
+            "email": "IvanIvanov@example.com",
+            "sex": "M",
+            "age": 22,
+            "telegram": "http://t.me/ivan_ivanov",
+            "phone_number": "+1234567890",
+            "portfolio": "https://portfolio.example.com/ivan",
+            "experience": "Учебный опыт работы в интернет-маркетинге.",
+            "course": 4
+        }
+    },
+    {
+        "model": "students.student",
+        "pk": 22,
+        "fields": {
+            "avatar": "",
+            "first_name": "Мария",
+            "last_name": "Сидорова",
+            "email": "MariaSidorova@example.com",
+            "sex": "F",
+            "age": 25,
+            "telegram": "http://t.me/maria_sidorova",
+            "phone_number": "+9876543210",
+            "portfolio": "https://portfolio.example.com/maria",
+            "experience": "Учебный опыт работы в интернет-маркетинге.",
+            "course": 4
+        }
+    },
+    {
+        "model": "students.student",
+        "pk": 23,
+        "fields": {
+            "avatar": "",
+            "first_name": "Алексей",
+            "last_name": "Петров",
+            "email": "AlexPetrov@example.com",
+            "sex": "M",
+            "age": 24,
+            "telegram": "http://t.me/alex_petrov",
+            "phone_number": "+1357924680",
+            "portfolio": "https://portfolio.example.com/alex",
+            "experience": "Учебный опыт работы в интернет-маркетинге.",
+            "course": 4
+        }
+    },
+    {
+        "model": "students.student",
+        "pk": 24,
+        "fields": {
+            "avatar": "",
+            "first_name": "Екатерина",
+            "last_name": "Иванова",
+            "email": "EkaterinaIvanova@example.com",
+            "sex": "F",
+            "age": 23,
+            "telegram": "http://t.me/ekaterina_ivanova",
+            "phone_number": "+1112233445",
+            "portfolio": "https://portfolio.example.com/ekaterina",
+            "experience": "Учебный опыт работы в интернет-маркетинге.",
+            "course": 4
+        }
+    },
+    {
+        "model": "students.student",
+        "pk": 25,
+        "fields": {
+            "avatar": "",
+            "first_name": "Максим",
+            "last_name": "Семенов",
+            "email": "MaxSemenov@example.com",
+            "sex": "M",
+            "age": 22,
+            "telegram": "http://t.me/max_semenov",
+            "phone_number": "+9876543210",
+            "portfolio": "https://portfolio.example.com/maxim",
+            "experience": "Учебный опыт работы в интернет-маркетинге.",
+            "course": 4
+        }
+    },
+    {
+        "model": "students.student",
+        "pk": 26,
+        "fields": {
+            "avatar": "",
+            "first_name": "Анна",
+            "last_name": "Павлова",
+            "email": "AnnaPavlova@example.com",
+            "sex": "F",
+            "age": 24,
+            "telegram": "http://t.me/anna_pavlova",
+            "phone_number": "+1234567890",
+            "portfolio": "https://portfolio.example.com/anna",
+            "experience": "Учебный опыт работы в интернет-маркетинге.",
+            "course": 4
+        }
+    },
+    {
+        "model": "students.student",
+        "pk": 27,
+        "fields": {
+            "avatar": "",
+            "first_name": "Сергей",
+            "last_name": "Морозов",
+            "email": "SergeyMorozov@example.com",
+            "sex": "M",
+            "age": 25,
+            "telegram": "http://t.me/sergey_morozov",
+            "phone_number": "+1112233445",
+            "portfolio": "https://portfolio.example.com/sergey",
+            "experience": "Учебный опыт работы в интернет-маркетинге.",
+            "course": 4
+        }
+    },
+    {
+        "model": "students.student",
+        "pk": 28,
+        "fields": {
+            "avatar": "",
+            "first_name": "Елена",
+            "last_name": "Козлова",
+            "email": "ElenaKozlova@example.com",
+            "sex": "F",
+            "age": 23,
+            "telegram": "http://t.me/elena_kozlova",
+            "phone_number": "+9876543210",
+            "portfolio": "https://portfolio.example.com/elena",
+            "experience": "Учебный опыт работы в интернет-маркетинге.",
+            "course": 4
+        }
+    },
+    {
+        "model": "students.student",
+        "pk": 29,
+        "fields": {
+            "avatar": "",
+            "first_name": "Игорь",
+            "last_name": "Смирнов",
+            "email": "IgorSmirnov@example.com",
+            "sex": "M",
+            "age": 24,
+            "telegram": "http://t.me/igor_smirnov",
+            "phone_number": "+1234567890",
+            "portfolio": "https://portfolio.example.com/igor",
+            "experience": "Учебный опыт работы в интернет-маркетинге.",
+            "course": 4
+        }
+    },
+    {
+        "model": "students.student",
+        "pk": 30,
+        "fields": {
+            "avatar": "",
+            "first_name": "Ольга",
+            "last_name": "Иванова",
+            "email": "OlgaIvanova@example.com",
+            "sex": "F",
+            "age": 25,
+            "telegram": "http://t.me/olga_ivanova",
+            "phone_number": "+1112233445",
+            "portfolio": "https://portfolio.example.com/olga",
+            "experience": "Учебный опыт работы в интернет-маркетинге.",
+            "course": 4
+        }
+    }
+]

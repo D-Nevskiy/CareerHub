@@ -1,0 +1,79 @@
+[
+    {
+        "model": "shared_info.educationlevel",
+        "pk": 1,
+        "fields": {
+            "name": "Intern"
+        }
+    },
+    {
+        "model": "shared_info.educationlevel",
+        "pk": 2,
+        "fields": {
+            "name": "Junior"
+        }
+    },
+    {
+        "model": "shared_info.educationlevel",
+        "pk": 3,
+        "fields": {
+            "name": "Middle"
+        }
+    },
+    {
+        "model": "shared_info.specialization",
+        "pk": 1,
+        "fields": {
+            "name": "Разработка"
+        }
+    },
+    {
+        "model": "shared_info.specialization",
+        "pk": 2,
+        "fields": {
+            "name": "Администрирование"
+        }
+    },
+    {
+        "model": "shared_info.specialization",
+        "pk": 3,
+        "fields": {
+            "name": "Дизайн"
+        }
+    },
+    {
+        "model": "shared_info.specialization",
+        "pk": 4,
+        "fields": {
+            "name": "Маркетинг"
+        }
+    },
+    {
+        "model": "shared_info.schedule",
+        "pk": 1,
+        "fields": {
+            "name": "Полный рабочий день"
+        }
+    },
+    {
+        "model": "shared_info.schedule",
+        "pk": 2,
+        "fields": {
+            "name": "Гибкий график"
+        }
+    },
+    {
+        "model": "shared_info.schedule",
+        "pk": 3,
+        "fields": {
+            "name": "Удаленная работа"
+        }
+    },
+    {
+        "model": "shared_info.schedule",
+        "pk": 4,
+        "fields": {
+            "name": "Частичная занятость"
+        }
+    }
+]
