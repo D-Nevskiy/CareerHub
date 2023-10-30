@@ -1,0 +1,64 @@
+version: '3.3'
+
+volumes:
+  pg_data:
+  static:
+  media:
+
+services:
+
+  db:
+    container_name: careerhub-db
+    image: postgres:13.0-alpine
+    env_file: .env
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+  backend:
+    container_name: careerhub-backend
+    depends_on:
+      - db
+      - redis
+    restart: always
+    image: primestr/careerhub_backend
+    env_file: .env
+    volumes:
+      - static:/app/backend_static/
+      - media:/app/media/
+
+  redis:
+    container_name: careerhub-redis
+    image: redis:7.0.5-alpine
+    hostname: redis
+
+  worker:
+    container_name: careerhub-celery
+    image: primestr/careerhub_backend
+    hostname: worker
+    entrypoint: celery
+    command: -A core.celery.celery_app.app worker --loglevel=info
+    links:
+      - redis
+    depends_on:
+      - redis
+
+  frontend:
+    container_name: careerhub-frontend
+    depends_on:
+      - backend
+    image: primestr/careerhub_frontend
+    command: cp -r /app/build/. /static/
+    volumes:
+      - static:/app/result_build/
+
+  nginx:
+    container_name: careerhub-nginx
+    depends_on:
+      - frontend
+    restart: always
+    image: primestr/careerhub_nginx
+    volumes:
+      - static:/app/static/
+      - media:/app/media/
+    ports:
+      - "8500:80"

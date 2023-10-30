@@ -180,7 +180,6 @@ class User(AbstractUser):
     is_active = models.BooleanField(default=False)
     username = None
 
-
     @property
     def is_admin(self):
         return self.role == self.ADMIN

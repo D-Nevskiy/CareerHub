@@ -67,7 +67,8 @@ class VacancyViewSet(ModelViewSet):
         Установлены стандартные разрешения Django REST framework.
 
     Methods:
-        - perform_create(self, serializer, **kwargs): Сохраняет автора вакансии.
+        - perform_create(self, serializer, **kwargs): Сохраняет
+        автора вакансии.
         - update(self, request, *args, **kwargs): Обновляет вакансию.
     """
     permission_classes = (IsAuthorOrAdmin,)
@@ -292,7 +293,9 @@ class CompareStudentViewSet(ViewSet):
         compare_students = CompareStudent.objects.filter(user=request.user)
         student_ids = [compare.student_id for compare in compare_students]
         students = Student.objects.filter(pk__in=student_ids)
-        serializer = StudentDetailSerializer(students, many=True, context={'request': request})
+        serializer = StudentDetailSerializer(students,
+                                             many=True,
+                                             context={'request': request})
 
         return Response(serializer.data, status=HTTP_200_OK)
 

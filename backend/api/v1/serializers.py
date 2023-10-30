@@ -1,5 +1,5 @@
 from typing import Dict, List
-from django.shortcuts import get_object_or_404
+
 from rest_framework.fields import IntegerField, SerializerMethodField
 from rest_framework.serializers import (ModelSerializer, CharField,
                                         ValidationError)
@@ -271,6 +271,7 @@ class VacancySmallReadSerializer(VacancyReadSerializer):
 
     Полностью наследуется от VacancyReadSerializer.
     """
+
     class Meta:
         model = Vacancy
         fields = (
@@ -579,9 +580,8 @@ class MatchingStudentSerializer(StudentSerializer):
         if total_required_skills == 0:
             return 0  # Избегаем деления на ноль
 
-        matching_percentage = (
-                (common_skills_count / total_required_skills)* 100
-        )
+        matching_percentage = ((common_skills_count / total_required_skills)
+                               * 100)
         return int(matching_percentage)
 
     class Meta:
