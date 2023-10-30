@@ -36,9 +36,9 @@ class CustomUserSerializer(UserSerializer):
         if 'telegram' in validated_data:
             user.telegram = validated_data['telegram']
         if 'phone_number' in validated_data:
-            user.telegram = validated_data['phone_number']
+            user.phone_number = validated_data['phone_number']
         if 'company' in validated_data:
-            user.telegram = validated_data['company']
+            user.company = validated_data['company']
 
         user.set_password(validated_data['password'])
         user.save()
