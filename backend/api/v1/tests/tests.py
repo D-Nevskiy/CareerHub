@@ -33,11 +33,24 @@ class StudentViewSetTestCase(TestCase):
         self.authorized_client = APIClient()
         self.authorized_client.force_authenticate(self.user)
 
-    def test_student_list(self):
+    def test_student_favorite(self):
+        """Проверка на добавление и удаление пользователя из избранных"""
         response1 = self.authorized_client.post('/api/favorite/1/')
         self.assertEqual(response1.status_code, 201)
+
         response2 = self.authorized_client.get('/api/favorite/')
         self.assertEqual(response2.status_code, 200)
+        favorite_students = response2.data
+        self.assertTrue(
+            any(student['id'] == self.student.id for student in favorite_students)
+        )
 
+        response3 = self.authorized_client.delete(f'/api/favorite/{self.student.id}/')
+        self.assertEqual(response3.status_code, 204)
 
-
+        response4 = self.authorized_client.get('/api/favorite/')
+        self.assertEqual(response4.status_code, 200)
+        favorite_students_after_deletion = response4.data
+        self.assertFalse(
+            any(student['id'] == self.student.id for student in favorite_students_after_deletion)
+        )

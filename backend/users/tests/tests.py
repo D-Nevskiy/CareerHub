@@ -2,6 +2,8 @@ from django.test import TestCase
 from users.models import User
 from django.core.exceptions import ValidationError
 
+from users.serializers import CustomUserSerializer
+
 
 class UserModelTest(TestCase):
 
@@ -56,3 +58,28 @@ class UserModelTest(TestCase):
                 user.phone_number = phone_number
                 with self.assertRaises(ValidationError):
                     user.full_clean()
+
+
+class CustomUserSerializerTest(TestCase):
+    def test_create_user(self):
+        data = {
+            'email': 'test@example.com',
+            'first_name': 'John',
+            'last_name': 'Doe',
+            'telegram': 'https://t.me/Vasil',
+            'phone_number': '+1234567890',
+            'company': 'Test Company',
+            'password': 'testpassword'
+        }
+
+        serializer = CustomUserSerializer(data=data)
+        self.assertTrue(serializer.is_valid())
+        user = serializer.save()
+
+        self.assertEqual(user.email, data['email'])
+        self.assertEqual(user.first_name, data['first_name'])
+        self.assertEqual(user.last_name, data['last_name'])
+        self.assertEqual(user.telegram, data['telegram'])
+        self.assertEqual(user.phone_number, data['phone_number'])
+        self.assertEqual(user.company, data['company'])
+        self.assertTrue(user.check_password(data['password']))

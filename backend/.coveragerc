@@ -1,5 +1,5 @@
 [run]
-source=users/,api/v1/,
+source=users/,api/v1/,vacancies/,students/
 omit=
     venv
     *migrations*
