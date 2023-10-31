@@ -52,9 +52,9 @@ services:
     build:
       context: ../frontend
       dockerfile: Dockerfile
-    command: cp -r /app/build/. /frontend_static/
+    command: cp -r /app/dist/. /frontend_static/
     volumes:
-      - static:/app/result_build/
+      - static:/app/dist
 
   nginx:
     container_name: careerhub-nginx

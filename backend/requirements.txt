@@ -1,6 +1,7 @@
 Django==3.2.18
 celery[redis]==5.2.7
 djoser==2.1.0
+django-cors-headers==4.3.0
 djangorestframework==3.14.0
 djangorestframework-simplejwt==4.7.2
 drf-extra-fields==3.7.0
