@@ -39,10 +39,10 @@ jobs:
           DB_HOST: 127.0.0.1
           DB_PORT: 5432
         run: |
-          python manage.py makemigrations
-          python manage.py migrate
           python -m flake8 backend/ --config backend/setup.cfg
           cd backend/
+          python manage.py makemigrations
+          python manage.py migrate
           python manage.py test
 
   build_backend_and_push_to_docker_hub:
