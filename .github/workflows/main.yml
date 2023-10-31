@@ -171,10 +171,10 @@ jobs:
             echo EMAIL_HOST_PASSWORD=${{ secrets.EMAIL_HOST_PASSWORD }} >> .env
             echo DEFAULT_FROM_EMAIL=${{ secrets.DEFAULT_FROM_EMAIL }} >> .env
 
-            sudo docker compose -f docker-compose.production.yml up -d
-            sudo docker compose -f docker-compose.production.yml exec backend python manage.py makemigrations
-            sudo docker compose -f docker-compose.production.yml exec backend python manage.py migrate
-            sudo docker compose -f docker-compose.production.yml exec backend python manage.py collectstatic --noinput
+            sudo docker compose -f docker-compose.prod.yml up -d
+            sudo docker compose -f docker-compose.prod.yml exec backend python manage.py makemigrations
+            sudo docker compose -f docker-compose.prod.yml exec backend python manage.py migrate
+            sudo docker compose -f docker-compose.prod.yml exec backend python manage.py collectstatic --noinput
             sudo systemctl restart nginx
 
   send_message_via_telegram:
