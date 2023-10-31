@@ -21,6 +21,9 @@
 [![Gunicorn](https://img.shields.io/badge/Gunicorn-%2020.0.4-blue?style=flat-square&logo=gunicorn)](https://gunicorn.org/)
 [![Nginx](https://img.shields.io/badge/Nginx-%201.22.1-blue?style=flat-square&logo=nginx)](https://www.nginx.com/)
 [![Certbot](https://img.shields.io/badge/certbot-%202.7.3-blue?style=flat-square&logo=letsencrypt)](https://certbot.eff.org/)
+[![Vite](https://img.shields.io/badge/Vite-%20-blue?style=flat-square&logo=vite)](https://vitejs.dev/)
+[![React](https://img.shields.io/badge/React-%20-blue?style=flat-square&logo=react)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-%20-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
 
 ***
 
