@@ -47,7 +47,7 @@ services:
     container_name: careerhub-frontend
     depends_on:
       - backend
-    image: primestr/careerhub_frontend
+    image: dnevskiy/careerhub_frontend
     command: cp -r /app/dist/. /frontend_static/
     volumes:
       - static:/app/dist/
