@@ -130,3 +130,9 @@ dmypy.json
 
 # .idea
 .idea
+
+**/migrations/**
+!**/migrations
+!**/migrations/__init__.py
+
+backend/media/
