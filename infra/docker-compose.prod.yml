@@ -42,14 +42,15 @@ services:
     depends_on:
       - redis
 
+
   frontend:
     container_name: careerhub-frontend
     depends_on:
       - backend
     image: primestr/careerhub_frontend
-    command: cp -r /app/build/. /static/
+    command: cp -r /app/dist/. /frontend_static/
     volumes:
-      - static:/app/result_build/
+      - static:/app/dist/
 
   nginx:
     container_name: careerhub-nginx
