@@ -67,7 +67,7 @@ jobs:
           with:
             context: ./backend/
             push: true
-            tags: primestr/careerhub_backend:latest
+            tags: dnevskiy/careerhub_backend:latest
 
   build_frontend_and_push_to_docker_hub:
     name: Push frontend Docker image to DockerHub
@@ -92,7 +92,7 @@ jobs:
         with:
           context: ./frontend/
           push: true
-          tags: primestr/careerhub_frontend:latest
+          tags: dnevskiy/careerhub_frontend:latest
 
   build_nginx_and_push_to_docker_hub:
     name: Push Nginx gateway Docker image to DockerHub
@@ -115,7 +115,7 @@ jobs:
         with:
           context: ./nginx/
           push: true
-          tags: primestr/careerhub_nginx:latest
+          tags: dnevskiy/careerhub_nginx:latest
 
   deploy:
     runs-on: ubuntu-latest
