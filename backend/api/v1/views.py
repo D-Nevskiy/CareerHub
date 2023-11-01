@@ -87,9 +87,9 @@ class VacancyViewSet(ModelViewSet):
             доступа пользователя.
         """
         user = self.request.user
-
-        if user.is_admin:
-            return Vacancy.objects.all()
+        if not user.is_anonymous:
+            if user.is_admin:
+                return Vacancy.objects.all()
 
         return Vacancy.objects.filter(author=user)
 
